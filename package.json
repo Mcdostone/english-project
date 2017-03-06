@@ -1,0 +1,34 @@
+{
+  "name": "english-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Mcdostone/english-project.git"
+  },
+  "keywords": [
+    "english",
+    "quizz",
+    "multiplayer"
+  ],
+  "author": "Mcdostone & YannickPhilippe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mcdostone/english-project/issues"
+  },
+  "homepage": "https://github.com/Mcdostone/english-project#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "ejs-mate": "^2.3.0",
+    "express-helpers": "^1.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
