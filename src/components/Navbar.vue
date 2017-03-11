@@ -1,14 +1,12 @@
 <template>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>
+  <v-nav>
+    <a href="#!" class="brand-logo center">Logo</a>
+    <ul class="left">
+      <li v-for="n in 3">
+        <a href="#!">Item</a>
+      </li>
+    </ul>
+  </v-nav>
 </template>
 
 <script>
@@ -16,3 +14,13 @@
     name: 'navbar',
   };
 </script>
+
+<style>
+nav {
+  z-index: 100;
+  background: #2c3e50;
+  position: fixed;
+  width: 80%;
+  left: 10%;
+}
+</style>

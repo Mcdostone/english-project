@@ -1,0 +1,13 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+img {
+  padding: 0;
+  margin: 0;
+}

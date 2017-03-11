@@ -8,7 +8,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'root',
+      component: Home,
+    },
+    {
+      path: '/creating-game',
+      name: 'create',
       component: Home,
     },
   ],
