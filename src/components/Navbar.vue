@@ -1,6 +1,8 @@
 <template>
   <v-nav>
-    <a href="#!" class="brand-logo center">Logo</a>
+    <router-link :to="{name: 'root'}" class="brand-logo center">
+      Logo
+    </router-link>
     <ul class="left">
       <li v-for="n in 3">
         <a href="#!">Item</a>
@@ -15,10 +17,20 @@
   };
 </script>
 
-<style>
+<style lang="scss">
+$red: #CF142B;
+
+nav ul a {
+  color: black;
+  font-weight: 300;
+}
+nav .brand-logo {
+  color: black;
+}
+
 nav {
   z-index: 100;
-  background: #2c3e50;
+  background: white;
   position: fixed;
   width: 80%;
   left: 10%;
