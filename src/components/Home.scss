@@ -3,7 +3,7 @@ $red: #CF142B;
 
 .splashscreen {
   width: auto;
-  height: 50vh;
+  height: auto;
   position: relative;
   overflow: hidden;
   &:after{
@@ -53,6 +53,7 @@ $red: #CF142B;
 .splashscreen-img {
   width: 100%;
   height: auto;
+  float: left;
   object-fit: cover;
 }
 

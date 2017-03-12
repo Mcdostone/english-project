@@ -5,8 +5,8 @@ var engine = require('ejs-mate')
 var bodyParser = require('body-parser')
 var helpers = require('express-helpers')
 var routes = require('./routes')
-var sockets=  require('./sockets')
-var PORT = 3141
+var sockets =  require('./sockets')
+var config = require('./config')
 
 app.set('view engine', 'ejs')
 app.engine('ejs', engine)
@@ -17,8 +17,8 @@ app.use('/', routes(express.Router()))
 
 helpers(app)
 
-app.listen(PORT, function() {
+app.listen(config.port, function() {
 	let io = require('socket.io').listen(this)
 	sockets(io)
-	console.log("server is running: http://localhost:" + PORT)
+	console.log("server is running: http://localhost:" + config.port)
 });
