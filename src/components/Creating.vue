@@ -18,14 +18,19 @@
         <v-btn wavesLight="true" >Create</v-btn>
       </div>
 
+      <question></question>
+
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Creating',
-  };
+import Question from '@/components/Question';
+
+export default {
+  name: 'Creating',
+  components: { Question },
+};
 </script>
 
 <style lang="scss">
