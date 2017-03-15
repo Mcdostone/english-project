@@ -1,43 +1,52 @@
 <template>
-  <div class="container container-quizz">
-    <h2>Creating a game</h2>
-
-    <div class="container">
-
+<div class="">
+  <h2>Creating a game</h2>
+  <div class="container">
       <div class="row">
         <div class="col s6 offset-s3">
           <div class="input-field">
-            <v-icon prefix>account_circle</v-icon>
-              <v-text-input name="username" id="username"></v-text-input>
-              <label for="username">Username</label>
+            <i class="material-icons prefix">account_circle</i>
+            <input id="username" v-model="inputUsername" @keyup="update()" type="text" class="validate">
+            <label for="username">Username</label>
           </div>
         </div>
       </div>
 
       <div class="row center-align">
-        <v-btn wavesLight="true" >Create</v-btn>
+        <a @click="createGame()" class="waves-effect waves-light btn">Create</a>
       </div>
-
-      <question></question>
-
     </div>
   </div>
+</div>s
 </template>
 
 <script>
-import Question from '@/components/Question';
+import AppStore from '@/AppStore';
 
 export default {
-  name: 'Creating',
-  components: { Question },
+  name: 'creating',
+  data() {
+    return {
+      store: AppStore,
+      inputUsername: '',
+    };
+  },
+  computed: {
+    username() {
+      if (this.store && this.store.state.username) return this.store.state.username;
+      return 'guest';
+    },
+  },
+  methods: {
+    createGame() {
+      this.$router.push('/quizz');
+    },
+    update() {
+      this.store.state.username = this.inputUsername;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-.container-quizz {
-  margin-top: 100px;
-  h2 {
-    text-align: center;
-  }
-}
 </style>

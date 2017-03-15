@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <router-view></router-view>
+    <transition enter-active-class="hellIn" leave-active-class="">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 

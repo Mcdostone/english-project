@@ -12,8 +12,10 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "cors": "^2.8.1",
     "vue": "^2.2.2",
     "vue-materials": "^1.0.7-rc.7",
+    "vue-resource": "^1.2.1",
     "vue-router": "^2.2.0"
   },
   "devDependencies": {

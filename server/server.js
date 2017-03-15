@@ -7,11 +7,15 @@ var helpers = require('express-helpers')
 var routes = require('./routes')
 var sockets =  require('./sockets')
 var config = require('./config')
+var cors = require('cors')
 
 app.set('view engine', 'ejs')
 app.engine('ejs', engine)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors({
+	origin: 'http://localhost:8080'
+}))
 app.use(express.static(__dirname + '/public'))
 app.use('/', routes(express.Router()))
 
