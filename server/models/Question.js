@@ -21,6 +21,10 @@ var Question = sequelize.define('question', {
   answer4: {
     type: Sequelize.STRING,
     field: 'answer_4'
+  },
+  visual: {
+    type: Sequelize.STRING,
+    field: 'visual'
   }},
   {
     freezeTableName: true

@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-</div>s
+</div>
 </template>
 
 <script>
