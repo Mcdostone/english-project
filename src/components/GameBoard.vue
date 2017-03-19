@@ -8,7 +8,7 @@
         <div class="col s6 offset-s3">
           <div class="input-field">
             <i class="material-icons prefix">account_circle</i>
-            <input id="username" v-model="username" type="text" class="validate">
+            <input id="username" v-model="inputUsername" @keyup="setUsername(inputUsername)" type="text" class="validate">
             <label class="active" for="username">Username</label>
           </div>
         </div>
@@ -26,20 +26,19 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import NavbarGame from '@/components/NavbarGame';
 import Loader from '@/components/Loader';
 import Creating from '@/components/Creating';
 import Quizz from '@/components/Quizz';
-import AppStore from '@/AppStore';
 
 export default {
   name: 'Game',
   data() {
     return {
+      inputUsername: 'guest',
       loading: false,
       created: false,
-      username: 'guest',
-      store: AppStore,
     };
   },
   components: {
@@ -49,14 +48,20 @@ export default {
     Quizz,
   },
   computed: {
+    ...mapGetters(['username', 'countQuestions']),
+
     currentQuestion() {
-      if (this.store.hasQuestions()) {
-        return this.store.currentQuestion();
+      if (this.$store.getters.countQuestions > 0) {
+        return this.$store.getters.currentQuestion;
       }
       return undefined;
     },
   },
   methods: {
+    ...mapGetters(['countQuestions']),
+
+    ...mapActions(['setUsername']),
+
     createGame() {
       this.created = true;
       this.loading = true;
@@ -65,7 +70,7 @@ export default {
     fetchQuestions() {
       this.$http.get('http://localhost:3141/api/questions').then((response) => {
         if (response.body) {
-          this.store.addQuestion(response.body);
+          this.$store.dispatch('addQuestion', response.body);
           this.loading = false;
         }
       });

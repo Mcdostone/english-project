@@ -6,7 +6,7 @@
         <div class="col s6 offset-s3">
           <div class="input-field">
             <i class="material-icons prefix">account_circle</i>
-            <input id="username" v-model="inputUsername" @keyup="update()" type="text" class="validate">
+            <input id="username" v-model="inputUsername" @keyup="setUsername(inputUsername)" type="text" class="validate">
             <label for="username">Username</label>
           </div>
         </div>
@@ -21,29 +21,23 @@
 </template>
 
 <script>
-import AppStore from '@/AppStore';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'creating',
   data() {
     return {
-      store: AppStore,
-      inputUsername: '',
+      defaultUsername: 'Guest',
     };
   },
   computed: {
-    username() {
-      if (this.store && this.store.state.username) return this.store.state.username;
-      return 'guest';
-    },
+    ...mapGetters(['username']),
   },
   methods: {
     createGame() {
       this.$router.push('/quizz');
     },
-    update() {
-      this.store.state.username = this.inputUsername;
-    },
+    ...mapActions(['setUsername']),
   },
 };
 </script>

@@ -8,15 +8,9 @@
 </template>
 
 <script>
-import AppStore from '@/AppStore';
 
 export default {
   name: 'NavbarGame',
-  data() {
-    return {
-      store: AppStore,
-    };
-  },
   props: ['username'],
 };
 </script>

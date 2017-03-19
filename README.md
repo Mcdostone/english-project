@@ -91,7 +91,7 @@ For the database, we use postgreSQL, simple and cool !
     createuser -P --interactive root
     Enter password for new role: root
     Enter it again: root
-    Shall the new role be a superuser? (y/n) n
+    Shall the new role be a superuser? (y/n) y
     Shall the new role be allowed to create databases? (y/n) y
     Shall the new role be allowed to create more new roles? (y/n) y
     createdb -O root -E UTF8 english
@@ -100,6 +100,13 @@ For the database, we use postgreSQL, simple and cool !
     # Connects to the database
     psql -U root english
     ...
+
+
+    # Insert data
+    # Connects to the 'english' database
+    psql english
+    COPY questions(question, answer_1, answer_2, answer_3, answer_4, visual) FROM '/path/to/file/english-project/server/questions.csv' DELIMITER '|' CSV;
+
 
 
 Sequelize handles communication with the database !

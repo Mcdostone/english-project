@@ -1,8 +1,9 @@
-import Materials from 'vue-materials';
 import Vue from 'vue';
+import Materials from 'vue-materials';
 import VueResource from 'vue-resource';
 import App from './App';
 import router from './router';
+import store from './store';
 
 require('./assets/style.css');
 
@@ -14,6 +15,7 @@ Vue.http.options.emulateJSON = true;
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App },
 });

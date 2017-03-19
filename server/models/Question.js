@@ -1,10 +1,11 @@
 let Sequelize = require('sequelize')
 let sequelize = require('../db/db')
 
-var Question = sequelize.define('question', {
+var Question = sequelize.define('questions', {
   question: {
     type: Sequelize.STRING,
-    field: 'question'
+    field: 'question',
+    unique: true
   },
   answer1: {
     type: Sequelize.STRING,
@@ -27,7 +28,8 @@ var Question = sequelize.define('question', {
     field: 'visual'
   }},
   {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false
   }
 )
 
