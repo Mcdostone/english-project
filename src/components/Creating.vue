@@ -34,7 +34,7 @@ export default {
     ...mapGetters(['username']),
   },
   methods: {
-    createGame() {
+    playAgain() {
       this.$router.push('/quizz');
     },
     ...mapActions(['setUsername']),

@@ -97,6 +97,8 @@ const getters = {
   /* eslint-disable no-unused-vars arrow-body-style */
   getAnswer: (s, g) => index => s.questions[index].answers[s.questions[index].correct],
 
+  getquestion: (s, g) => index => s.questions[index].question,
+
   getUserAnswer: (s, g) => index => s.questions[index].answers[s.answers[index]],
 };
 

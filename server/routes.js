@@ -1,6 +1,7 @@
 let path = require('path')
 let db = require('./db/db')
 let Question = require('./models/Question')
+let Player = require('./models/Player')
 let Sequelize = require('sequelize')
 let utils = require('./utils/Formatter')
 
@@ -28,6 +29,18 @@ module.exports = function(router) {
 			res.send(JSON.stringify(questions));
 		});
 	})
+
+	router.get('/api/top', function(req, res) {
+		let players = []
+		Player.findAll({ limit: 200 }).then(q => {
+			q.forEach((player) => {
+				players.push(utils.formatQuestion(player))
+			})
+			res.setHeader('Content-Type', 'application/json');
+			res.send(JSON.stringify(players));
+		});
+	})
+
 
 
 

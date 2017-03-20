@@ -1,14 +1,14 @@
 <template>
 <div class="quizz left">
-  <div class="question" v-if="question">
-    <div class="center visual-container">
-      <img :src="question.visual" class="visual" alt="">
-    </div>
-    <p>{{question.question}}</p>
-    <ul class="container">
-      <li v-for="(a, index) in question.answers" @click="answer($event, index)" class="answer btn waves-effect waves-light">{{a}}</li>
-    </ul>
-  </div>
+ <div class="question" v-if="question">
+   <div class="center visual-container">
+     <img :src="question.visual" class="visual" alt="">
+   </div>
+   <p>{{question.question}}</p>
+   <ul class="container">
+     <li v-for="(a, index) in question.answers" @click="answer($event, index)" class="answer btn waves-effect waves-light">{{a}}</li>
+   </ul>
+ </div>
 </div>
 </template>
 
@@ -16,15 +16,31 @@
 
 export default {
   name: 'quizz',
+  data() {
+    return {
+      hidden: [],
+    };
+  },
   props: ['question'],
+  computed: {
+    isHidden(index) {
+      return this.hidden[index] === true;
+    },
+  },
   methods: {
     answer(e, index) {
       if (this.$store.getters.isCorrectAnswer(index)) {
         this.$store.dispatch('answer', index);
-      } else {
-        this.$store.dispatch('reduceLife');
         /* eslint-disable no-param-reassign */
-        e.target.style.visibility = 'hidden';
+        /* eslint-disable no-return-assign */
+        this.hidden.forEach(el => el.style.visibility = 'visible');
+        this.hidden = [];
+      } else {
+        this.hidden.push(e.target);
+        /* eslint-disable no-param-reassign */
+        /* eslint-disable no-return-assign */
+        this.hidden.forEach(el => el.style.visibility = 'hidden');
+        this.$store.dispatch('reduceLife');
       }
     },
   },
@@ -91,6 +107,10 @@ export default {
     height: 50px;
     background: #E57373;
   }*/
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 </style>
