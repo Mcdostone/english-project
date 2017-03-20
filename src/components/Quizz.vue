@@ -6,7 +6,7 @@
     </div>
     <p>{{question.question}}</p>
     <ul class="container">
-      <li v-for="(a, index) in question.answers" @click="answer(index)" class="answer btn waves-effect waves-light">{{a}}</li>
+      <li v-for="(a, index) in question.answers" @click="answer($event, index)" class="answer btn waves-effect waves-light">{{a}}</li>
     </ul>
   </div>
 </div>
@@ -15,11 +15,17 @@
 <script>
 
 export default {
-  name: 'Loader',
+  name: 'quizz',
   props: ['question'],
   methods: {
-    answer(index) {
-      this.$store.dispatch('answer', index);
+    answer(e, index) {
+      if (this.$store.getters.isCorrectAnswer(index)) {
+        this.$store.dispatch('answer', index);
+      } else {
+        this.$store.dispatch('reduceLife');
+        /* eslint-disable no-param-reassign */
+        e.target.style.visibility = 'hidden';
+      }
     },
   },
 };
@@ -73,7 +79,7 @@ export default {
   position: relative;
   width: 100%;
   text-align: center;
-  &:after {
+/*  &:after {
     content: '';
     position: absolute;
     bottom: 0px;
@@ -84,7 +90,7 @@ export default {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     height: 50px;
     background: #E57373;
-  }
+  }*/
 }
 
 </style>

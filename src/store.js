@@ -22,6 +22,12 @@ const mutations = {
     s.questions.push(...q);
   },
 
+  REDUCE_LIFE(s) {
+    /* eslint-disable no-param-reassign  */
+    s.lifes -= 1;
+  },
+
+
   NEXT_QUESTION(s) {
     /* eslint-disable no-param-reassign  */
     s.current += 1;
@@ -64,6 +70,10 @@ const getters = {
     return s.current + 1;
   },
 
+  isHacker(s) {
+    return s.questions.length === 0;
+  },
+
   getQuestion(s) {
     return s.questions[0];
   },
@@ -79,6 +89,9 @@ const getters = {
   getQuestions(s) {
     return s.questions;
   },
+
+  /* eslint-disable no-unused-vars*/
+  isCorrectAnswer: (s, g) => index => s.questions[s.current].correct === index,
 
   /* eslint-disable no-unused-vars*/
   /* eslint-disable no-unused-vars arrow-body-style */
@@ -97,6 +110,10 @@ const actions = {
 
   nextQuestion(s) {
     s.commit('NEXT_QUESTION');
+  },
+
+  reduceLife(s) {
+    s.commit('REDUCE_LIFE');
   },
 
   answer(s, answer) {

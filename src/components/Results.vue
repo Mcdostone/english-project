@@ -1,11 +1,11 @@
 <template>
 <div class="container container-quizz">
 
-  <h2>You got right !</h2>
+  <h2>{{message}}</h2>
   <div class="octopus center">
-    <img src="../assets/nice.gif" alt="">
+    <img :src="octopus" alt="">
   </div>
-  
+
   <table>
    <thead>
      <tr>
@@ -37,6 +37,20 @@ export default {
   computed: {
     questions() {
       return this.$store.getters.getQuestions;
+    },
+
+    octopus() {
+      if (this.$store.getters.isHacker) {
+        return '../assets/angry.gif';
+      }
+      return '../assets/nice.gif';
+    },
+
+    message() {
+      if (this.$store.getters.getLifes === 0) {
+        return 'So much intelligence ...';
+      }
+      return 'Have you hacked ? Congratulations !';
     },
   },
   methods: {
