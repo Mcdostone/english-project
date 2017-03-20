@@ -105,6 +105,7 @@ For the database, we use postgreSQL, simple and cool !
     # Insert data
     # Connects to the 'english' database
     psql english
+    DELETE FROM questions;
     COPY questions(question, answer_1, answer_2, answer_3, answer_4, correct, visual) FROM '/path/to/file/english-project/server/questions.csv' DELIMITER '|' CSV;
 
 

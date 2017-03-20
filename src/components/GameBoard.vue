@@ -20,14 +20,11 @@
     </div>
   </div>
 
-  <quizz :question="currentQuestion" v-if="created && !quizzFinished"></quizz>
+  <quizz :question="currentQuestion" v-if="created && !isFinished"></quizz>
   <loader v-show="loading"></loader>
-  <quizz-counter v-show="created && !quizzFinished"></quizz-counter>
+  <quizz-counter v-show="created && !isFinished"></quizz-counter>
 
-  <div v-if="quizzFinished">
-    It's finished :)
   </div>
-</div>
 </template>
 
 <script>
@@ -55,7 +52,15 @@ export default {
     Quizz,
   },
   computed: {
-    ...mapGetters(['username', 'countQuestions', 'quizzFinished']),
+    ...mapGetters(['username', 'countQuestions']),
+
+    isFinished() {
+      if (this.$store.getters.quizzFinished === true) {
+        this.$router.push('/end');
+        return true;
+      }
+      return false;
+    },
 
     currentQuestion() {
       if (this.$store.getters.countQuestions > 0) {
