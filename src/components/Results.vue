@@ -1,34 +1,56 @@
 <template>
 <div class="container container-quizz">
-    It's finished :)
+
+  <h2>You got right !</h2>
+  <div class="octopus center">
+    <img src="../assets/nice.gif" alt="">
+  </div>
+  
+  <table>
+   <thead>
+     <tr>
+       <th data-field="question">Question</th>
+       <th data-field="expected">Expected Answer</th>
+       <th data-field="yours">Your answer</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr v-for="(question, index) in questions">
+       <td>{{question.question}}</td>
+       <td>{{getExpectedAnswer(index)}}</td>
+       <td>{{getUserAnswer(index)}}</td>
+     </tr>
+   </tbody>
+  </table>
+
 </div>
 </template>
 
 <script>
-// import { mapGetters, mapActions } from 'vuex';
+// import { mapGetters } from 'vuex';
 
 export default {
   name: 'results',
   data() {
     return {};
   },
+  computed: {
+    questions() {
+      return this.$store.getters.getQuestions;
+    },
+  },
+  methods: {
+    getExpectedAnswer(index) {
+      return this.$store.getters.getAnswer(index);
+    },
+
+    getUserAnswer(index) {
+      return this.$store.getters.getUserAnswer(index);
+    },
+  },
 };
 
 </script>
 
 <style lang="scss">
-.container-quizz {
-  display: inline-block;
-  height: auto;
-  margin-top: 100px;
-  margin-bottom: 50px;
-  padding: 0;
-  width: 80%;
-  margin-left: 10%;
-  //background: red;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  h2 {
-    text-align: center;
-  }
-}
 </style>

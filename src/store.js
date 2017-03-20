@@ -16,6 +16,7 @@ const mutations = {
     /* eslint-disable no-param-reassign  */
     s.username = u;
   },
+
   ADD_QUESTION(s, q) {
     /* eslint-disable no-param-reassign  */
     s.questions.push(...q);
@@ -74,6 +75,16 @@ const getters = {
   getLifes(s) {
     return s.lifes;
   },
+
+  getQuestions(s) {
+    return s.questions;
+  },
+
+  /* eslint-disable no-unused-vars*/
+  /* eslint-disable no-unused-vars arrow-body-style */
+  getAnswer: (s, g) => index => s.questions[index].answers[s.questions[index].correct],
+
+  getUserAnswer: (s, g) => index => s.questions[index].answers[s.answers[index]],
 };
 
 const actions = {

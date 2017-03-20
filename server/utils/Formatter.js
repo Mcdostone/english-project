@@ -8,6 +8,7 @@ function formatQuestion (question) {
   answer.answers[2] = question.answer3;
   answer.answers[3] = question.answer4;
   answer.visual = question.visual;
+  answer.correct = question.correct;
   return answer;
 }
 
