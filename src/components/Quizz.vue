@@ -6,7 +6,7 @@
     </div>
     <p>{{question.question}}</p>
     <ul class="container">
-      <li v-for="a in question.answers" class="answer btn waves-effect waves-light">{{a}}</li>
+      <li v-for="(a, index) in question.answers" @click="answer(index)" class="answer btn waves-effect waves-light">{{a}}</li>
     </ul>
   </div>
 </div>
@@ -17,6 +17,11 @@
 export default {
   name: 'Loader',
   props: ['question'],
+  methods: {
+    answer(index) {
+      this.$store.dispatch('answer', index);
+    },
+  },
 };
 </script>
 

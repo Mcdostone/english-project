@@ -23,6 +23,10 @@ var Question = sequelize.define('questions', {
     type: Sequelize.STRING,
     field: 'answer_4'
   },
+  correct: {
+    type: Sequelize.INTEGER,
+    field: 'correct'
+  },
   visual: {
     type: Sequelize.STRING,
     field: 'visual'

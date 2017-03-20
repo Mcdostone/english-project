@@ -20,8 +20,13 @@
     </div>
   </div>
 
-  <quizz :question="currentQuestion" v-if="created"></quizz>
+  <quizz :question="currentQuestion" v-if="created && !quizzFinished"></quizz>
   <loader v-show="loading"></loader>
+  <quizz-counter v-show="created && !quizzFinished"></quizz-counter>
+
+  <div v-if="quizzFinished">
+    It's finished :)
+  </div>
 </div>
 </template>
 
@@ -30,6 +35,7 @@ import { mapGetters, mapActions } from 'vuex';
 import NavbarGame from '@/components/NavbarGame';
 import Loader from '@/components/Loader';
 import Creating from '@/components/Creating';
+import QuizzCounter from '@/components/QuizzCounter';
 import Quizz from '@/components/Quizz';
 
 export default {
@@ -45,10 +51,11 @@ export default {
     NavbarGame,
     Loader,
     Creating,
+    QuizzCounter,
     Quizz,
   },
   computed: {
-    ...mapGetters(['username', 'countQuestions']),
+    ...mapGetters(['username', 'countQuestions', 'quizzFinished']),
 
     currentQuestion() {
       if (this.$store.getters.countQuestions > 0) {
@@ -56,6 +63,9 @@ export default {
       }
       return undefined;
     },
+  },
+  created() {
+    this.$store.dispatch('reset');
   },
   methods: {
     ...mapGetters(['countQuestions']),

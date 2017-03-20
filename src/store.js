@@ -6,7 +6,9 @@ Vue.use(Vuex);
 const state = {
   username: 'guest',
   questions: [],
+  answers: [],
   current: 0,
+  lifes: 3,
 };
 
 const mutations = {
@@ -18,6 +20,27 @@ const mutations = {
     /* eslint-disable no-param-reassign  */
     s.questions.push(...q);
   },
+
+  NEXT_QUESTION(s) {
+    /* eslint-disable no-param-reassign  */
+    s.current += 1;
+  },
+
+  ANSWER(s, answer) {
+    /* eslint-disable no-param-reassign  */
+    if (s.questions[s.current].correct !== answer) {
+      s.lifes -= 1;
+    }
+    s.answers[s.current] = answer;
+    s.current += 1;
+  },
+
+  RESET(s) {
+    s.questions = [];
+    s.answers = [];
+    s.current = 0;
+    s.lifes = 3;
+  },
 };
 
 const getters = {
@@ -25,8 +48,19 @@ const getters = {
     return s.username;
   },
 
+  quizzFinished(s) {
+    if (s.lifes <= 0) {
+      return true;
+    }
+    return (s.questions.length === 0) ? false : s.current >= s.questions.length;
+  },
+
   countQuestions(s) {
     return s.questions.length;
+  },
+
+  questionsAnswered(s) {
+    return s.current + 1;
   },
 
   getQuestion(s) {
@@ -35,6 +69,10 @@ const getters = {
 
   currentQuestion(s) {
     return s.questions[s.current];
+  },
+
+  getLifes(s) {
+    return s.lifes;
   },
 };
 
@@ -46,6 +84,17 @@ const actions = {
     s.commit('ADD_QUESTION', question);
   },
 
+  nextQuestion(s) {
+    s.commit('NEXT_QUESTION');
+  },
+
+  answer(s, answer) {
+    s.commit('ANSWER', answer);
+  },
+
+  reset(s) {
+    s.commit('RESET');
+  },
 };
 
 const store = new Vuex.Store({
