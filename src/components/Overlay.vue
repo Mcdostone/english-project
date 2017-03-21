@@ -5,7 +5,7 @@
     <p>{{countdown}}</p>
   </div>
   <div>
-    <img id="loading" :src="query" alt="" class="octopus bubble" style="height: 200px">
+    <img v-for="(image, index) in images" :src="image" alt="" class="octopus loading" :class="{bubble: index !== 0}">
   </div>
 
 </div>
@@ -13,6 +13,9 @@
 
 <script>
 import query from '../assets/query.gif';
+import nice from '../assets/nice.gif';
+import load from '../assets/load.gif';
+import angry from '../assets/angry.gif';
 
 export default {
   name: 'Overlay',
@@ -20,15 +23,22 @@ export default {
     return {
       finished: false,
       countdown: 3,
-      query,
+      images: [query],
       timer: undefined,
     };
   },
   created() {
+    this.images.push(nice);
     this.timer = setInterval(() => {
-      if (this.countdown === 0) {
+      if (this.countdown === 1) {
         this.$emit('begin');
         this.finished = true;
+      }
+      if (this.countdown === 3) {
+        this.images.push(angry);
+      }
+      if (this.countdown === 2) {
+        this.images.push(load);
       }
       this.countdown -= 1;
     }, 1000);
@@ -68,7 +78,11 @@ export default {
   font-weight: 100;
 }
 
-#loading {
+.loading {
+  position: fixed;
+  bottom: 5%;
+  transform: translateX(-50%);
   border-radius: 50%;
+  height: 200px
 }
 </style>

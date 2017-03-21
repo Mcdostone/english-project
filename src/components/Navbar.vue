@@ -2,7 +2,7 @@
 
   <v-nav>
     <router-link :to="{name: 'root'}" class="brand-logo center">
-      <img :src="logo" alt="" class="logo">
+      <img :src="logo" alt="" class="logo rotate-hover">
     </router-link>
 
     <ul class="left">
@@ -39,9 +39,9 @@ nav .brand-logo {
 
 .logo {
   display: inline-block;
-  width: 90px;
-  border-radius: 50px;
-  height: 90px;
+  width: 110px;
+  border-radius: 50%;
+  height: 110px;
 }
 
 nav {
@@ -50,5 +50,16 @@ nav {
   position: fixed;
   width: 100%;
   //left: 10%;
+}
+
+.rotate-hover {
+  transition-property: transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+ filter: grayscale(100%);
+}
+
+.rotate-hover:hover {
+  transform: scale(1.02);
 }
 </style>

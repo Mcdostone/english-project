@@ -34,7 +34,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import NavbarGame from '@/components/NavbarGame';
 import Loader from '@/components/Loader';
 import Overlay from '@/components/Overlay';
 import Creating from '@/components/Creating';
@@ -54,7 +53,6 @@ export default {
     };
   },
   components: {
-    NavbarGame,
     Loader,
     Creating,
     Overlay,
@@ -125,7 +123,7 @@ export default {
   height: auto;
   flex: 1 0 auto;
   padding: 0;
-  padding-top: 90px;
+  padding-top: 120px;
   width: 100%;
   //margin-left: 10%;
 

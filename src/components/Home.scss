@@ -20,7 +20,7 @@ $red: #CF142B;
     position: relative;
     object-fit: cover;
     height: 500px;
-    width: auto;
+    width: 100%;
     float: left;
   }
 
@@ -67,7 +67,7 @@ $red: #CF142B;
 
   &:hover {
     background: white;
-    color: $red;
+    color: #26a69a;
   }
 }
 
