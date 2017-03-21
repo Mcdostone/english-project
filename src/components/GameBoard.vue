@@ -1,14 +1,14 @@
 <template>
 <div class="container container-quizz">
 
-  <div v-if="!created">
+  <div v-if="!created" style="width: 100%">
     <h2>Creating a game</h2>
     <div class="container">
       <div class="row">
         <div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
           <div class="input-field">
             <i class="material-icons prefix">account_circle</i>
-            <input id="username" v-model="inputUsername" @keyup="setUsername(inputUsername)" type="text" class="validate">
+            <input id="username" v-model="usernameInput" type="text" class="validate">
             <label class="active" for="username">Username</label>
           </div>
         </div>
@@ -46,9 +46,9 @@ export default {
   name: 'Game',
   data() {
     return {
-      inputUsername: 'guest',
       loading: false,
       load,
+      usernameInput: this.$store.getters.username,
       begin: false,
       created: false,
     };
@@ -81,6 +81,10 @@ export default {
   },
   created() {
     this.$store.dispatch('reset');
+    document.body.style.overflow = 'hidden';
+  },
+  destroyed() {
+    document.body.style.overflow = 'initial';
   },
   methods: {
     ...mapGetters(['countQuestions']),
@@ -88,6 +92,7 @@ export default {
     ...mapActions(['setUsername']),
 
     run() {
+      this.setUsername(this.usernameInput);
       this.begin = true;
     },
 
@@ -97,7 +102,11 @@ export default {
       this.fetchQuestions();
     },
     fetchQuestions() {
-      this.$http.get('http://localhost:3141/api/questions').then((response) => {
+      let url = '/api/questions';
+      if (process.env.NODE_ENV === 'development') {
+        url = 'http://localhost:3141/api/questions';
+      }
+      this.$http.get(url).then((response) => {
         if (response.body) {
           this.$store.dispatch('addQuestion', response.body);
           this.loading = false;
@@ -116,7 +125,7 @@ export default {
   height: auto;
   flex: 1 0 auto;
   padding: 0;
-  padding-top: 120px;
+  padding-top: 90px;
   width: 100%;
   //margin-left: 10%;
 

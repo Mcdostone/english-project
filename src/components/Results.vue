@@ -4,7 +4,6 @@
   <h2>{{message}}</h2>
   <div class="points center-align">
     <p v-if="!isHacker">{{questionsAnswered - 1}} {{points}} in {{seconds}} seconds</p>
-    <i v-if="!isHacker">{{raillerie}}</i>
   </div>
 
   <div class="center">
@@ -33,17 +32,21 @@ import angry from '../assets/angry.gif';
 export default {
   name: 'results',
   data() {
-    return {};
+    return {
+      railleries: [
+        'Your father will be so proud of you ...',
+        'Can you do better?',
+        'So much intelligence...',
+        'You were born intelligent. Education ruined you!',
+        'You\'re never too old to learn something good!',
+        '"Two things are infinite: the universe and human stupidity; and I\'m not sure about the universe." - Albert Einstein',
+      ],
+    };
   },
   components: {
     TopPlayers,
   },
   computed: {
-
-    raillerie() {
-      return 'Your father will be so proud of you ...';
-    },
-
     ...mapGetters(['seconds']),
 
     points() {
@@ -62,14 +65,10 @@ export default {
     },
 
     message() {
-      if (this.$store.getters.getLifes === 0) {
-        return 'So much intelligence ...';
-      }
-
       if (this.$store.getters.isHacker) {
         return 'Are you Martinez, the hacker?';
       }
-      return 'Can you do better?';
+      return this.railleries[Math.floor(Math.random() * this.railleries.length)];
     },
 
     ...mapGetters(['isHacker', 'questionsAnswered', 'getquestion']),
@@ -87,7 +86,11 @@ export default {
       this.$router.push('/create');
     },
     sendResults() {
-      this.$http.post('http://localhost:3141/api/top', {
+      let url = '/api/top';
+      if (process.env.NODE_ENV === 'development') {
+        url = 'http://localhost:3141/api/top';
+      }
+      this.$http.post(url, {
         username: this.$store.getters.username,
         points: this.$store.getters.questionsAnswered,
       });
@@ -102,6 +105,7 @@ export default {
   flex-direction: column;
   padding-left: 20%;
   padding-right: 20%;
+  justify-content: flex-start;
 }
 .points p {
   line-height: 50px;

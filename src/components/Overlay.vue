@@ -5,7 +5,7 @@
     <p>{{countdown}}</p>
   </div>
   <div>
-    <img :src="query" alt="" style="height: 200px">
+    <img id="loading" :src="query" alt="" class="octopus bubble" style="height: 200px">
   </div>
 
 </div>
@@ -57,10 +57,18 @@ export default {
 .overlay div {
   text-align: center;
 }
+
+.overlay .octopus {
+  border-radius: 50%;
+}
 .overlay p {
   font-size: 6em;
   color: white;
   margin: 10px;
   font-weight: 100;
+}
+
+#loading {
+  border-radius: 50%;
 }
 </style>

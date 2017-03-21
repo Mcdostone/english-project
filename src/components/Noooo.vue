@@ -1,10 +1,10 @@
 <template>
-<div class="overlay">
+<div class="overlay noooo">
   <div>
     <p>Nooo !</p>
   </div>
   <div>
-    <img :src="angry" alt="" style="height: 200px">
+    <img :src="angry" alt="" style="height: 200px" class="octopus">
   </div>
 </div>
 </template>
@@ -24,7 +24,7 @@ export default {
     this.timeout = setTimeout(() => {
       this.cls = '';
       this.$emit('close');
-    }, 1500);
+    }, 1000);
   },
   destroyed() {
     clearTimeout(this.timeout);
@@ -33,4 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
+.noooo {
+  overflow: hidden;
+}
 </style>

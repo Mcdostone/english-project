@@ -1,6 +1,6 @@
 <template>
 <div class="quizz left">
-  <transition  enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+  <transition enter-active-class="animated pulse" leave-active-class="animated fadeOut">
     <noooo v-if="wrong" v-on:close="closeNoooo"></noooo>
   </transition>
  <div class="question" v-if="question">
@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     closeNoooo() {
-      console.log('fjhdfhjsjhfd');
       this.wrong = false;
     },
 
