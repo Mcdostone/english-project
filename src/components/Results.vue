@@ -7,8 +7,8 @@
     <i v-if="!isHacker">{{raillerie}}</i>
   </div>
 
-  <div class="octopus center">
-    <img :src="octopus" alt="" style="height: 250px">
+  <div class="center">
+    <img :src="octopus" alt="" class="octopus" style="height: 250px">
   </div>
 
   <div v-if="!isHacker" class="row center-align">
@@ -98,6 +98,8 @@ export default {
 
 <style lang="scss">
 .results {
+  display: flex;
+  flex-direction: column;
   padding-left: 20%;
   padding-right: 20%;
 }

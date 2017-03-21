@@ -1,7 +1,10 @@
 <template>
 <div class="quizz left">
+  <transition  enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+    <noooo v-if="wrong" v-on:close="closeNoooo"></noooo>
+  </transition>
  <div class="question" v-if="question">
-   <div class="center visual-container">
+   <div v-if="question.visual" class="center visual-container">
      <img :src="question.visual" class="visual" alt="">
    </div>
    <p>{{question.question}}</p>
@@ -13,13 +16,18 @@
 </template>
 
 <script>
+import Noooo from '@/components/Noooo';
 
 export default {
   name: 'quizz',
   data() {
     return {
       hidden: [],
+      wrong: false,
     };
+  },
+  components: {
+    Noooo,
   },
   props: ['question'],
   computed: {
@@ -28,6 +36,11 @@ export default {
     },
   },
   methods: {
+    closeNoooo() {
+      console.log('fjhdfhjsjhfd');
+      this.wrong = false;
+    },
+
     answer(e, index) {
       if (this.$store.getters.isCorrectAnswer(index)) {
         this.$store.dispatch('answer', index);
@@ -39,6 +52,7 @@ export default {
         this.hidden.push(e.target);
         /* eslint-disable no-param-reassign */
         /* eslint-disable no-return-assign */
+        this.wrong = true;
         this.hidden.forEach(el => el.style.visibility = 'hidden');
         this.$store.dispatch('reduceLife');
       }
@@ -51,14 +65,19 @@ export default {
 .quizz {
   display: inline-block;
   width: 100%;
+  flex: 1 0 auto;
   padding-left: 10%;
 }
 
 
 
 .question {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  flex-direction: column;
   width: 100%;
+  height: auto;
   text-align: center;
 }
 .question p {
@@ -116,4 +135,14 @@ export default {
   visibility: hidden;
 }
 
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>

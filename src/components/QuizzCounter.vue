@@ -1,8 +1,6 @@
 <template>
 <ul class="quizz-counter">
-  <li>{{questionsAnswered}}</li>
-  <li>/</li>
-  <li>{{countQuestions}}</li>
+  <li>{{questionsAnswered}}/{{countQuestions}}</li>
   <li id="lifes">
     <span><p>{{getLifes}}</p><i class="large material-icons center">starts</i>
 </span>
@@ -74,7 +72,7 @@ export default {
 }
 
 #lifes {
-  margin-top: 50px;
+  //margin-top: 50px;
 }
 
 </style>

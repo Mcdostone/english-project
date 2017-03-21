@@ -20,7 +20,7 @@
       </div>
 
       <div class="row center-align">
-        <img :src="load" alt="" class="octopus" tyle="height: 300px">
+        <img :src="load" alt="" class="octopus" style="height: 300px">
       </div>
     </div>
   </div>
@@ -110,7 +110,9 @@ export default {
 
 <style lang="scss">
 .container-quizz {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
   height: auto;
   flex: 1 0 auto;
   padding: 0;

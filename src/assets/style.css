@@ -1,9 +1,8 @@
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
   .quizz-counter {
     background: #26a69a;
     position: fixed;
-    height: 200px;
+    height: 80px;
     bottom: 0;
     width: 100%;
     top: initial;
@@ -15,33 +14,75 @@
     color: white;
     border-top: 2px solid #059C8C;
     border-right: none;
+    margin: 0;
+  }
+
+  .quizz {
+    display: flex;
+    padding-bottom: 80px;
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .quizz-counter li {
+    font-size: 2em;
+  }
+
+  .overlay p {
+    font-size: 3em;
   }
 
   .octopus {
     height: 150px;
   }
 
-  .quizz {
-    display: inline-block;
+  .results .row.center-align .btn {
+    margin-bottom: 10px;
     width: 100%;
-    padding-left: 0;
   }
+
   .visual {
     height: 100px;
   }
 
   .container-quizz {
-    padding-top: 78px;
+    padding-top: 120px;
   }
-
 
   h2 {
     font-size: 2em;
+    margin: 0;
   }
+
+  .results {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
 }
 
 
+@media screen and (max-width: 400px) , screen and (max-height: 500px) {
 
+  .question .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 1;
+    justify-content: space-between;
+  }
+
+  .question .container .answer {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1em;
+    height: 15%;
+    vertical-align: middle;
+  }
+
+}
 @keyframes hellIn {
   from {
     opacity: 0;
