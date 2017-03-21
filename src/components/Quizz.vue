@@ -50,10 +50,11 @@ export default {
 <style lang="scss">
 .quizz {
   display: inline-block;
-  width: 80%;
-  margin-left: 10%;
-  padding-bottom: 20px;
+  width: 100%;
+  padding-left: 10%;
 }
+
+
 
 .question {
   display: inline-block;
@@ -61,14 +62,15 @@ export default {
   text-align: center;
 }
 .question p {
-  padding: 10px 0;
+  padding: 0px 0;
+  margin: 10px;
   font-size: 1.5em;
   //border-bottom: 2px solid rgba(gray, 0.1);
 }
 
 .question .container {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -85,7 +87,8 @@ export default {
   }
 }
 .visual {
-  max-height: 300px;
+  max-height: 250px;
+  object-fit: cover;
   display: block;
   margin: 0 auto;
 }

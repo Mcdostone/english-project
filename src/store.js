@@ -9,12 +9,18 @@ const state = {
   answers: [],
   current: 0,
   lifes: 3,
+  chronometer: undefined,
 };
 
 const mutations = {
   SET_USERNAME(s, u) {
     /* eslint-disable no-param-reassign  */
     s.username = u;
+  },
+
+  SET_CHRONO(s, seconds) {
+    /* eslint-disable no-param-reassign  */
+    s.chronometer = seconds;
   },
 
   ADD_QUESTION(s, q) {
@@ -74,6 +80,11 @@ const getters = {
     return s.questions.length === 0;
   },
 
+  seconds(s) {
+    return s.chronometer;
+  },
+
+
   getQuestion(s) {
     return s.questions[0];
   },
@@ -124,6 +135,10 @@ const actions = {
 
   reset(s) {
     s.commit('RESET');
+  },
+
+  setChrono(s, seconds) {
+    s.commit('SET_CHRONO', seconds);
   },
 };
 

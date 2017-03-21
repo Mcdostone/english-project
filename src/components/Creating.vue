@@ -3,7 +3,7 @@
   <h2>Creating a game</h2>
   <div class="container">
       <div class="row">
-        <div class="col s6 offset-s3">
+        <div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
           <div class="input-field">
             <i class="material-icons prefix">account_circle</i>
             <input id="username" v-model="inputUsername" @keyup="setUsername(inputUsername)" type="text" class="validate">

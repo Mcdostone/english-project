@@ -31,18 +31,24 @@ module.exports = function(router) {
 	})
 
 	router.get('/api/top', function(req, res) {
-		let players = []
-		Player.findAll({ limit: 200 }).then(q => {
-			q.forEach((player) => {
-				players.push(utils.formatQuestion(player))
-			})
+		Player.findAll({ limit: 200 }).then(p => {
 			res.setHeader('Content-Type', 'application/json');
-			res.send(JSON.stringify(players));
+			res.send(JSON.stringify(p));
 		});
 	})
 
 
-
+	router.post('/api/top', function(req, res) {
+		if(req.body.username && req.body.points) {
+			Player.create({
+				username: req.body.username,
+				points: req.body.points,
+			}).then(function(player){
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(player));
+			})
+		}
+	})
 
   return router
 }

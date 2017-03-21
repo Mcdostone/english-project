@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h2>Top players</h2>
   <div v-if="players.length !== 0">
     <table>
      <thead>
@@ -36,7 +37,7 @@ export default {
   created() {
     this.$http.get('http://localhost:3141/api/top').then((response) => {
       if (response.body && response.body.length !== 0) {
-        this.players.push(response.body);
+        response.body.forEach(e => this.players.push(e));
       }
     });
   },

@@ -16,7 +16,7 @@ var Player = sequelize.define('players', {
   }
 )
 
-Player.sync({force: true}).then(() => {
+Player.sync({force: false}).then(() => {
   console.log('######### Players table created\n')
 })
 

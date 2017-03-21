@@ -5,7 +5,7 @@
     <h2>Creating a game</h2>
     <div class="container">
       <div class="row">
-        <div class="col s6 offset-s3">
+        <div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
           <div class="input-field">
             <i class="material-icons prefix">account_circle</i>
             <input id="username" v-model="inputUsername" @keyup="setUsername(inputUsername)" type="text" class="validate">
@@ -13,16 +13,21 @@
           </div>
         </div>
       </div>
+      <overlay v-if="begin" v-on:begin="createGame"></overlay>
 
       <div class="row center-align">
-        <a @click="createGame()" class="waves-effect waves-light btn">Create</a>
+        <a @click="run()" class="waves-effect waves-light btn">Create</a>
+      </div>
+
+      <div class="row center-align">
+        <img :src="load" alt="" class="octopus" tyle="height: 300px">
       </div>
     </div>
   </div>
 
   <quizz :question="currentQuestion" v-if="created && !isFinished"></quizz>
   <loader v-show="loading"></loader>
-  <quizz-counter v-show="created && !isFinished"></quizz-counter>
+  <quizz-counter v-if="created && !isFinished"></quizz-counter>
 
   </div>
 </template>
@@ -31,9 +36,11 @@
 import { mapGetters, mapActions } from 'vuex';
 import NavbarGame from '@/components/NavbarGame';
 import Loader from '@/components/Loader';
+import Overlay from '@/components/Overlay';
 import Creating from '@/components/Creating';
 import QuizzCounter from '@/components/QuizzCounter';
 import Quizz from '@/components/Quizz';
+import load from '../assets/load.gif';
 
 export default {
   name: 'Game',
@@ -41,6 +48,8 @@ export default {
     return {
       inputUsername: 'guest',
       loading: false,
+      load,
+      begin: false,
       created: false,
     };
   },
@@ -48,6 +57,7 @@ export default {
     NavbarGame,
     Loader,
     Creating,
+    Overlay,
     QuizzCounter,
     Quizz,
   },
@@ -77,6 +87,10 @@ export default {
 
     ...mapActions(['setUsername']),
 
+    run() {
+      this.begin = true;
+    },
+
     createGame() {
       this.created = true;
       this.loading = true;
@@ -98,15 +112,13 @@ export default {
 .container-quizz {
   display: inline-block;
   height: auto;
-  margin-top: 100px;
-  margin-bottom: 50px;
+  flex: 1 0 auto;
   padding: 0;
-  width: 80%;
-  margin-left: 10%;
+  padding-top: 120px;
+  width: 100%;
+  //margin-left: 10%;
+
   //background: red;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-  h2 {
-    text-align: center;
-  }
 }
 </style>

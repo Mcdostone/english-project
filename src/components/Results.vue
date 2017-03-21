@@ -1,39 +1,26 @@
 <template>
-<div class="container container-quizz">
+<div class="container-quizz results">
 
   <h2>{{message}}</h2>
   <div class="points center-align">
-    <p>{{questionsAnswered - 1}} {{points}}</p>
+    <p v-if="!isHacker">{{questionsAnswered - 1}} {{points}} in {{seconds}} seconds</p>
+    <i v-if="!isHacker">{{raillerie}}</i>
   </div>
 
   <div class="octopus center">
-    <img :src="octopus" alt="">
+    <img :src="octopus" alt="" style="height: 250px">
   </div>
 
-  <div class="row center-align">
+  <div v-if="!isHacker" class="row center-align">
     <a @click="playAgain()" class="waves-effect waves-light btn">Play again</a>
-    <a @click="playAgain()" class="waves-effect waves-light btn">Share facebook</a>
+    <a @click="sendResults" class="waves-effect waves-light btn">Share your score</a>
   </div>
+  <div v-else class="row center-align">
+    <a @click="playAgain()" class="waves-effect waves-light btn">Play game</a>
+  </div>
+
 
   <top-players></top-players>
-
-  <table v-if="!isHacker && questionsAnswered !== 1">
-   <thead>
-     <tr>
-       <th data-field="question">Question</th>
-       <th data-field="expected">Expected Answer</th>
-       <th data-field="yours">Your answer</th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr v-for="(v,index) in questionsAnswered - 1">
-       <td>{{getquestion(index)}}</td>
-       <td>{{getExpectedAnswer(index)}}</td>
-       <td>{{getUserAnswer(index)}}</td>
-     </tr>
-   </tbody>
-  </table>
-
 </div>
 </template>
 
@@ -52,6 +39,13 @@ export default {
     TopPlayers,
   },
   computed: {
+
+    raillerie() {
+      return 'Your father will be so proud of you ...';
+    },
+
+    ...mapGetters(['seconds']),
+
     points() {
       return this.$store.getters.questionsAnswered - 1 > 1 ? 'points' : 'point';
     },
@@ -92,18 +86,32 @@ export default {
     playAgain() {
       this.$router.push('/create');
     },
+    sendResults() {
+      this.$http.post('http://localhost:3141/api/top', {
+        username: this.$store.getters.username,
+        points: this.$store.getters.questionsAnswered,
+      });
+    },
   },
 };
-
 </script>
 
 <style lang="scss">
-
+.results {
+  padding-left: 20%;
+  padding-right: 20%;
+}
 .points p {
   line-height: 50px;
   font-size: 50px;
   font-weight: 100;
   margin: 0;
   padding: 0;
+}
+i {
+  font-weight: 100;
+  margin: 0px;
+  //font-style: normal;
+  font-size: 1.2em;
 }
 </style>

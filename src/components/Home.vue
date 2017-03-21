@@ -7,11 +7,11 @@
           <p>Create a game !</p>
           <router-link :to="{name: 'create'}" class="play-button waves-effect waves-light btn">
             <i class="material-icons left">cloud</i>
-            Create
+            Play
           </router-link>
         </div>
       </div>
-      <div class="splashscreen-item">
+<!--      <div class="splashscreen-item">
         <img src="https://images.pexels.com/photos/34729/pexels-photo.jpg?w=2000&auto=compress&cs=tinysrgb" id="fjf" class="splashscreen-img" alt="bus">
         <div class="splashscreen-text">
           <p>Join a game !</p>
@@ -21,6 +21,7 @@
           </router-link>
         </div>
       </div>
+-->
     </div>
 
     <div class="container rules">

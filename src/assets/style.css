@@ -1,3 +1,47 @@
+
+@media screen and (max-width: 500px) {
+  .quizz-counter {
+    background: #26a69a;
+    position: fixed;
+    height: 200px;
+    bottom: 0;
+    width: 100%;
+    top: initial;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-top: 2px solid #059C8C;
+    border-right: none;
+  }
+
+  .octopus {
+    height: 150px;
+  }
+
+  .quizz {
+    display: inline-block;
+    width: 100%;
+    padding-left: 0;
+  }
+  .visual {
+    height: 100px;
+  }
+
+  .container-quizz {
+    padding-top: 78px;
+  }
+
+
+  h2 {
+    font-size: 2em;
+  }
+}
+
+
+
 @keyframes hellIn {
   from {
     opacity: 0;
@@ -49,6 +93,13 @@ body, html {
   padding: 0;
   height: 100%;
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 html {
   background-color: #f9f9f9;
 }
@@ -72,6 +123,9 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .my-button {
@@ -86,6 +140,15 @@ body {
 
 .my-big-button {
   height: 30px;
+}
+
+h2, h3, h4{
+  font-weight: 100;
+  color: #01766A;
+}
+
+h2 {
+  text-align: center;
 }
 
 
