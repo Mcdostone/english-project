@@ -1,16 +1,17 @@
 <template>
-
-  <v-nav>
+<nav>
+  <div class="nav-wrapper">
     <router-link :to="{name: 'root'}" class="brand-logo center">
       <img :src="logo" alt="" class="logo rotate-hover">
     </router-link>
 
     <ul class="left">
-      <li v-for="n in 3">
+      <li v-for="n in 1">
         <a href="#!">Item</a>
       </li>
     </ul>
-  </v-nav>
+  </div>
+</nav>
 </template>
 
 <script>

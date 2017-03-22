@@ -16,6 +16,26 @@ const mutations = {
   SET_USERNAME(s, u) {
     /* eslint-disable no-param-reassign  */
     s.username = u;
+    const names = ['Elisabeth II', 'Mr Bean', 'Jake Bugg', 'The D answer'];
+
+    const question = {
+      question: 'Who are you ?',
+      answers: [],
+      correct: 3,
+      visual: 'youtube,PdLIerfXuZ4,20,26',
+    };
+
+    names.forEach((e) => {
+      if (u !== e) {
+        question.answers.push(e);
+      } else {
+        question.answers.push((Math.random() * 9e6).toString(36));
+      }
+    });
+
+    question.answers[question.correct] = u;
+
+    s.questions.push(question);
   },
 
   SET_CHRONO(s, seconds) {

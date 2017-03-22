@@ -34,6 +34,14 @@ export default {
 
 <style lang="scss">
 .noooo {
+  height: 100vh;
+  width: 100%;
   overflow: hidden;
+  justify-content: center;
+  z-index: 999;
+
+  p {
+    font-size: 6em;
+ }
 }
 </style>

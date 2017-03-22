@@ -19,9 +19,13 @@ $red: #CF142B;
   .splashscreen-item {
     position: relative;
     object-fit: cover;
-    height: 500px;
+    height: auto;
     width: 100%;
     float: left;
+  }
+
+  .splashscreen-img {
+    height: 500px;
   }
 
   .splashscreen-text {

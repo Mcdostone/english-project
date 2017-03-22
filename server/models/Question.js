@@ -40,13 +40,17 @@ var Question = sequelize.define('questions', {
 )
 
 Question.sync({force: true}).then(() => {
-  fs.createReadStream(config.questionsFile).pipe(parse({delimiter: '|'})).on('data', function(csvrow) {
+  fs.createReadStream(config.questionsFile).pipe(parse({
+    delimiter: '|',
+    comment: '#',
+    relax_column_count: true,
+  })).on('data', function(csvrow) {
     if(csvrow.length < 6)
-      console.log("PROBLEM with CSV file !");
+      console.log("PROBLEM with CSV file !", csvrow);
     else {
       let visual = undefined;
       if(csvrow.length > 6)
-      visual = csvrow[6];
+        visual = csvrow[6];
 
       Question.create({
         question: csvrow[0],

@@ -2,8 +2,7 @@
 <ul class="quizz-counter">
   <li>{{questionsAnswered}}/{{countQuestions}}</li>
   <li id="lifes">
-    <span><p>{{getLifes}}</p><i class="large material-icons center">starts</i>
-</span>
+    <span><p>{{getLifes}}</p><img :src="heart" alt=""></span>
   </li>
   <li>
     <chronometer :stop="quizzFinished"></chronometer>
@@ -14,11 +13,17 @@
 <script>
 import { mapGetters } from 'vuex';
 import Chronometer from '@/components/Chronometer';
+import heart from '../assets/heart.gif';
 
 export default {
   name: 'QuizzCounter',
   components: {
     Chronometer,
+  },
+  data() {
+    return {
+      heart,
+    };
   },
   computed: {
     ...mapGetters(['questionsAnswered', 'countQuestions', 'getLifes', 'quizzFinished']),
@@ -71,8 +76,8 @@ export default {
   }
 }
 
-#lifes {
-  //margin-top: 50px;
+#lifes img {
+  margin-left: 5px;
 }
 
 </style>

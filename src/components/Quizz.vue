@@ -1,22 +1,26 @@
 <template>
-<div class="quizz left">
-  <transition enter-active-class="animated pulse" leave-active-class="animated fadeOut">
-    <noooo v-if="wrong" v-on:close="closeNoooo"></noooo>
-  </transition>
- <div class="question" v-if="question">
-   <div v-if="question.visual" class="center visual-container">
-     <img :src="question.visual" class="visual" alt="">
-   </div>
-   <p>{{question.question}}</p>
-   <ul class="container">
-     <li v-for="(a, index) in question.answers" @click="answer($event, index)" class="answer btn waves-effect waves-light">{{a}}</li>
-   </ul>
- </div>
+<div class="quizz" v-if="question">
+  <div class="question">
+    <transition enter-active-class="animated pulse" leave-active-class="animated fadeOut">
+      <noooo v-if="wrong" v-on:close="closeNoooo"></noooo>
+    </transition>
+    <div v-if="question.visual && !isVideo" class="center visual-container">
+      <img :src="question.visual" class="visual" alt="">
+    </div>
+    <div v-if="isVideo" class="center visual-container">
+      <video-question :video="question.visual"></video-question>
+    </div>
+    <p>{{question.question}}</p>
+    <ul>
+      <li v-for="(a, index) in question.answers" @click="answer($event, index)" class="answer btn waves-effect waves-light">{{a}}</li>
+    </ul>
+  </div>
 </div>
 </template>
 
 <script>
 import Noooo from '@/components/Noooo';
+import VideoQuestion from '@/components/VideoQuestion';
 
 export default {
   name: 'quizz',
@@ -28,13 +32,18 @@ export default {
   },
   components: {
     Noooo,
+    VideoQuestion,
   },
   props: ['question'],
   computed: {
     isHidden(index) {
       return this.hidden[index] === true;
     },
+    isVideo() {
+      return this.question.visual.split(',')[0] === 'youtube';
+    },
   },
+
   methods: {
     closeNoooo() {
       this.wrong = false;
@@ -86,7 +95,34 @@ export default {
   //border-bottom: 2px solid rgba(gray, 0.1);
 }
 
-.question .container {
+.visual {
+  max-height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.visual-container {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  text-align: center;
+/*  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 50px;
+    transform: translate(-50%, 50%);
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    height: 50px;
+    background: #E57373;
+  }*/
+}
+
+.question ul {
   padding: 0;
   margin: 0 auto;
   width: 100%;
@@ -103,31 +139,6 @@ export default {
     margin-bottom: 20px;
     box-sizing: border-box;
   }
-}
-.visual {
-  max-height: 250px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
-}
-
-.visual-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  text-align: center;
-/*  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    width: 50px;
-    transform: translate(-50%, 50%);
-    border-radius: 50%;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-    height: 50px;
-    background: #E57373;
-  }*/
 }
 
 .hidden {

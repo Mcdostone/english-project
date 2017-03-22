@@ -58,7 +58,7 @@ export default {
   left: 0;
   top: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: #26a69a;
   right: 0;
   left: 0;

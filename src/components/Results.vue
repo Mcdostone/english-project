@@ -28,6 +28,7 @@ import { mapGetters } from 'vuex';
 import TopPlayers from '@/components/TopPlayers';
 import nice from '../assets/nice.gif';
 import angry from '../assets/angry.gif';
+import sad from '../assets/sad.gif';
 
 export default {
   name: 'results',
@@ -47,7 +48,7 @@ export default {
     TopPlayers,
   },
   computed: {
-    ...mapGetters(['seconds']),
+    ...mapGetters(['seconds', 'getLifes']),
 
     points() {
       return this.$store.getters.questionsAnswered - 1 > 1 ? 'points' : 'point';
@@ -60,6 +61,9 @@ export default {
     octopus() {
       if (this.$store.getters.isHacker) {
         return angry;
+      }
+      if (this.getLifes === 0) {
+        return sad;
       }
       return nice;
     },

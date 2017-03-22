@@ -2,7 +2,7 @@
   <div>
     <div class="splashscreen">
       <div class="splashscreen-item">
-        <video controls="controls" class="splashscreen-img" autoplay loop>
+        <video class="splashscreen-img" autoplay loop :poster="poster">
           <source :src="video" type="video/mp4" />
         </video>
         <div class="splashscreen-text">
@@ -45,12 +45,14 @@
 
 <script>
 import video from '../assets/splashscreen.mp4';
+import poster from '../assets/logo.png';
 
 export default {
   name: 'Home',
   data() {
     return {
       video,
+      poster,
     };
   },
 };

@@ -1,7 +1,7 @@
 <template>
-<div class="container container-quizz">
+<div class="container-quizz">
 
-  <div v-if="!created" style="width: 100%">
+  <div v-if="!created">
     <h2>Creating a game</h2>
     <div class="container">
       <div class="row">
@@ -20,15 +20,14 @@
       </div>
 
       <div class="row center-align">
-        <img :src="load" alt="" class="octopus" style="height: 300px">
+        <img :src="load" alt="" class="octopus">
       </div>
     </div>
   </div>
 
   <quizz :question="currentQuestion" v-if="created && !isFinished"></quizz>
-  <loader v-show="loading"></loader>
+  <!--<loader v-show="loading"></loader>-->
   <quizz-counter v-if="created && !isFinished"></quizz-counter>
-
   </div>
 </template>
 
@@ -118,13 +117,15 @@ export default {
 <style lang="scss">
 .container-quizz {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   height: auto;
   flex: 1 0 auto;
   padding: 0;
+  flex-direction: column;
   padding-top: 120px;
   width: 100%;
+  box-sizing: border-box;
   //margin-left: 10%;
 
   //background: red;
