@@ -12,19 +12,9 @@
             Play
           </router-link>
         </div>
-      </div>
-<!--      <div class="splashscreen-item">
-        <img src="https://images.pexels.com/photos/34729/pexels-photo.jpg?w=2000&auto=compress&cs=tinysrgb" id="fjf" class="splashscreen-img" alt="bus">
-        <div class="splashscreen-text">
-          <p>Join a game !</p>
-          <router-link :to="{name: 'create'}" class="play-button waves-effect waves-light btn">
-            <i class="material-icons left">cloud</i>
-            Join
-          </router-link>
-        </div>
-      </div>
--->
+        <span @click="playVideo" class="splashscreen-overlay"></span>
     </div>
+  </div>
 
     <div class="container rules">
       <h2>The Octopus Quizz !</h2>
@@ -45,7 +35,7 @@
 
 <script>
 import video from '../assets/splashscreen.mp4';
-import poster from '../assets/logo.png';
+import poster from '../assets/poster.png';
 
 export default {
   name: 'Home',
@@ -54,6 +44,11 @@ export default {
       video,
       poster,
     };
+  },
+  methods: {
+    playVideo() {
+      console.log(document.getElementsByClassName('splashscreen-img')[0].play());
+    },
   },
 };
 </script>

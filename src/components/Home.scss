@@ -6,7 +6,8 @@ $red: #CF142B;
   height: auto;
   position: relative;
   overflow: hidden;
-  &:after{
+  
+  .splashscreen-overlay {
     position: absolute;
     top: 0;
     bottom: 0;

@@ -134,6 +134,8 @@ export default {
   .answer {
     width: 40%;
     height: 50px;
+    min-height: 50px;
+    height: auto;
     line-height: 50px;
     margin: 1%;
     margin-bottom: 20px;
