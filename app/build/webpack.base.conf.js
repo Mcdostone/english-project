@@ -69,7 +69,14 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: "jquery"
+      jQuery: "jquery",
+      $: 'jquery',
+      'window.$': 'jquery',
+      'window.jQuery': 'jquery',
+      'window.jquery': 'jquery',
+      Materialize: 'materialize-css',
+      "window.Materialize": 'materialize-css',
+      'Vel': 'velocity-animate'
     })
   ],
 }

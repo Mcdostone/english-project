@@ -15,12 +15,14 @@ export default {
       youtube,
       played: false,
       player: undefined,
+      ready: false,
     };
   },
   props: ['video'],
   watch: {
     /* eslint-disable no-unused-vars */
     video(vid, old) {
+      this.video = vid;
       this.loadVideo();
     },
   },
@@ -29,28 +31,40 @@ export default {
       const parts = this.video.split(',');
       parts.shift();
       /* eslint-disable max-len */
-      this.youtube.load((YT) => {
-        this.player = new YT.Player('video', {
-          events: {
-            onReady: () => {
-              this.player.loadVideoById({
-                videoId: parts[0],
-                startSeconds: parseInt(parts[1], 10),
-                endSeconds: parts.length === 3 ? parseInt(parts[2], 10) : parseInt(parts[1], 10) + 7,
-              });
+      if (this.ready && this.player !== undefined) {
+        this.changeVideo(parts[0], parseInt(parts[1], 10), parts.length === 3 ? parseInt(parts[2], 10) : parseInt(parts[1], 10) + 7);
+      } else {
+        this.youtube.load((YT) => {
+          this.player = new YT.Player('video', {
+            events: {
+              onReady: () => {
+                this.ready = true;
+                this.changeVideo(parts[0], parseInt(parts[1], 10), parts.length === 3 ? parseInt(parts[2], 10) : parseInt(parts[1], 10) + 7);
+              },
+              onStateChange: (event) => {
+                if (event.data === YT.PlayerState.PLAYING) {
+                  this.played = true;
+                }
+              },
             },
-            onStateChange: (event) => {
-              if (event.data === YT.PlayerState.PLAYING) {
-                this.played = true;
-              }
+            playerVars: {
+              showinfo: 1,
+              controls: 0,
+              rel: 0,
             },
-          },
-          playerVars: {
-            showinfo: 1,
-            controls: 0,
-            rel: 0,
-          },
+          });
         });
+      }
+    },
+    changeVideo(videoId, start, end) {
+      if (start > end) {
+        /* eslint-disable no-param-reassign  */
+        end = start + 7;
+      }
+      this.player.loadVideoById({
+        videoId,
+        startSeconds: start,
+        endSeconds: end,
       });
     },
 
@@ -60,6 +74,7 @@ export default {
       }
     },
   },
+
   created() {
     this.loadVideo();
   },

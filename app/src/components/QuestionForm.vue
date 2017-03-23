@@ -25,13 +25,36 @@
         </div>
       </div>
 
-      <div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
+
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a href="#image-input">Image</a></li>
+            <li class="tab col s3"><a  href="#youtube-input">Youtube Vidéo</a></li>
+          </ul>
+        </div>
+        <div id="image-input" class="col s12">
+          <div class="input-field">
+            <input id="visual-input" v-model="visual" type="text" name="visual" placeholder="http://www.gifbin.com/bin/102015/1444064429_pope_francis_table_cloth_trick.gif" class="validate">
+            <label class="active" for="visual-input">link of image</label>
+          </div>
+        </div>
+        <div id="youtube-input" class="col s12">
+          <div class="input-field">
+            <input id="youtube-input" v-model="youtube" type="text" name="visual" class="validate">
+            <label class="active" for="youtube-input">videoID (youtube,videoId,start,end)</label>
+          </div>
+
+        </div>
+      </div>
+
+      <!--<div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
         <div class="input-field">
           <input id="visual-input" v-model="visual" type="text" name="visual" placeholder="http://www.gifbin.com/bin/102015/1444064429_pope_francis_table_cloth_trick.gif" class="validate">
           <label class="active" for="visual-input">visual</label>
         </div>
       </div>
-
+      -->
     </div>
 
     <div class="form-question-item">
@@ -61,6 +84,7 @@ export default {
       placeholders: ['If I go, there will be trouble', 'God save the queen !', 'Be or not to be', 'The D answer'],
       answers: ['If I go, there will be trouble', 'God save the queen !', 'Be or not to be', 'The D answer'],
       visual: 'http://www.gifbin.com/bin/102015/1444064429_pope_francis_table_cloth_trick.gif',
+      youtube: 'youtube,sBzrzS1Ag_g, 50, 70',
       sent: false,
       token: undefined,
       correct: undefined,
@@ -77,7 +101,6 @@ export default {
         visual: this.visual,
         _csrf: this.token,
       };
-      console.log(q);
       return q;
     },
   },
@@ -99,7 +122,6 @@ export default {
           visual: this.visual,
           _csrf: this.token,
         };
-        console.log(data);
         this.$router.push('/thanks');
         this.$http.post(this.url(), JSON.stringify(data), {
           headers: { 'CSRF-Token': this.token },
@@ -117,6 +139,9 @@ export default {
       url = 'http://localhost:3141/api/question';
     }
     $('question-form, visual-input, answer1, answer2, answer3, answer4').characterCounter();
+    $(document).ready(() => {
+      $('ul.tabs').tabs();
+    });
     this.$http.get(url).then((response) => {
       if (response.body.token) {
         this.token = response.body.token;

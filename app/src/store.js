@@ -26,6 +26,12 @@ const mutations = {
       visual: 'youtube,PdLIerfXuZ4,20,26',
     };
 
+    const question2 = {
+      question: 'test ?',
+      answers: ['a', 'b', 'c', 'd'],
+      correct: 3,
+      visual: 'youtube,ovgCHfCnX3E,30,28',
+    };
     names.forEach((e) => {
       if (u !== e) {
         question.answers.push(e);
@@ -37,6 +43,7 @@ const mutations = {
     question.answers[question.correct] = u;
 
     s.questions.push(question);
+    s.questions.push(question2);
   },
 
   SET_CHRONO(s, seconds) {
