@@ -43,6 +43,34 @@ module.exports = function(router, csrfProtection) {
 		}
 	})
 
+	router.get('/api/question', csrfProtection,function(req, res) {
+		res.setHeader('Content-Type', 'application/json');
+		res.send(JSON.stringify({token: req.csrfToken()}));
+	})
+
+	router.post('/api/question', csrfProtection, function(req, res) {
+		console.log(req.body);
+		if(req.body.question && req.body.answers && req.body.correct) {
+			Question.create({
+				question: req.body.question,
+				answer1: req.body.answers[0],
+				answer2: req.body.answers[1],
+				answer3: req.body.answers[2],
+				answer4: req.body.answers[3],
+				correct: req.body.correct,
+				visual: req.body.visual
+			})
+			.then((q) => {
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(q));
+			}).catch(err => {
+				console.log(err);
+				res.setHeader('Content-Type', 'application/json');
+				res.send();
+			});
+		}
+	})
+
 	router.get('*', function(req, res, next) {
 		res.redirect('/');
 	});

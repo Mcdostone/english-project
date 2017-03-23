@@ -51,7 +51,11 @@ export default {
   created() {
     this.$http.get('http://localhost:3141/api/top').then((response) => {
       if (response.body && response.body.length !== 0) {
-        response.body.forEach((e) => {
+        response.body.forEach((e, index) => {
+          const date = new Date(e.createdAt);
+          /* eslint-disable no-param-reassign  */
+          e.rank = index + 1;
+          e.createdAt = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`;
           this.top.push(e);
         });
       }
@@ -101,7 +105,6 @@ export default {
     },
     sendResults() {
       this.sent = true;
-      console.log(this.sent);
       let url = '/api/top';
       if (process.env.NODE_ENV === 'development') {
         url = 'http://localhost:3141/api/top';

@@ -13,16 +13,10 @@
 
 <script>
 import Navbar from '@/components/Navbar';
-import logo from './assets/logo.png';
 
 export default {
   name: 'app',
   components: { Navbar },
-  data() {
-    return {
-      logo,
-    };
-  },
 };
 </script>
 

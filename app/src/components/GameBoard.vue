@@ -104,7 +104,6 @@ export default {
         url = 'http://localhost:3141/api/questions';
       }
       this.$http.get(url).then((response) => {
-        console.log(response.body);
         if (response.body && response.body.questions) {
           this.$store.dispatch('setToken', response.body.token);
           this.$store.dispatch('addQuestion', response.body.questions);

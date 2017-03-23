@@ -28,7 +28,6 @@ export default {
     loadVideo() {
       const parts = this.video.split(',');
       parts.shift();
-      console.log(parts[0]);
       /* eslint-disable max-len */
       this.youtube.load((YT) => {
         this.player = new YT.Player('video', {

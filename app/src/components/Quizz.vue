@@ -34,7 +34,7 @@ export default {
     Noooo,
     VideoQuestion,
   },
-  props: ['question'],
+  props: ['question', 'disable'],
   computed: {
     isHidden(index) {
       return this.hidden[index] === true;
@@ -56,19 +56,21 @@ export default {
     },
 
     answer(e, index) {
-      if (this.$store.getters.isCorrectAnswer(index)) {
-        this.$store.dispatch('answer', index);
-        /* eslint-disable no-param-reassign */
-        /* eslint-disable no-return-assign */
-        this.hidden.forEach(el => el.style.visibility = 'visible');
-        this.hidden = [];
-      } else {
-        this.hidden.push(e.target);
-        /* eslint-disable no-param-reassign */
-        /* eslint-disable no-return-assign */
-        this.wrong = true;
-        this.hidden.forEach(el => el.style.visibility = 'hidden');
-        this.$store.dispatch('reduceLife');
+      if (!this.disable) {
+        if (this.$store.getters.isCorrectAnswer(index)) {
+          this.$store.dispatch('answer', index);
+          /* eslint-disable no-param-reassign */
+          /* eslint-disable no-return-assign */
+          this.hidden.forEach(el => el.style.visibility = 'visible');
+          this.hidden = [];
+        } else {
+          this.hidden.push(e.target);
+          /* eslint-disable no-param-reassign */
+          /* eslint-disable no-return-assign */
+          this.wrong = true;
+          this.hidden.forEach(el => el.style.visibility = 'hidden');
+          this.$store.dispatch('reduceLife');
+        }
       }
     },
   },

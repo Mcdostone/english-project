@@ -2,7 +2,7 @@
 <nav>
   <div class="nav-wrapper">
     <router-link :to="{name: 'root'}" class="brand-logo center">
-      <img :src="logo" alt="" class="logo rotate-hover">
+      <img :src="logo" alt="" class="logo">
     </router-link>
 
     <ul class="left">
@@ -25,7 +25,7 @@
     <ul class="right">
       <li>
         <router-link :to="{name: 'form'}">
-          Suggest a question !
+          Suggest a question
         </router-link>
       </li>
     </ul>
@@ -34,14 +34,28 @@
 </template>
 
 <script>
-import logo from '../assets/logo.png';
+import logo from '../assets/logo0.png';
+import logo1 from '../assets/logo1.png';
+import logo2 from '../assets/logo2.png';
+import logo3 from '../assets/logo3.png';
+import logo4 from '../assets/logo4.png';
+import logo5 from '../assets/logo5.png';
+import logo6 from '../assets/logo6.png';
+import logo7 from '../assets/logo7.png';
+import logo8 from '../assets/logo8.png';
 
 export default {
   name: 'navbar',
   data() {
     return {
-      logo,
+      logos: [logo, logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8],
     };
+  },
+  computed: {
+    logo() {
+      const rand = Math.floor((Math.random() * this.logos.length));
+      return this.logos[rand];
+    },
   },
 };
 </script>
@@ -62,6 +76,10 @@ nav .brand-logo {
   width: 110px;
   border-radius: 50%;
   height: 110px;
+  filter: grayscale(100%);
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+
 }
 
 nav {
@@ -72,14 +90,11 @@ nav {
   //left: 10%;
 }
 
-.rotate-hover {
-  transition-property: transform;
+.logo:hover {
+  transition-property: transform, filter;
   transition-duration: 0.2s;
   transition-timing-function: ease;
- filter: grayscale(100%);
-}
-
-.rotate-hover:hover {
   transform: scale(1.02);
+  filter: grayscale(0);
 }
 </style>

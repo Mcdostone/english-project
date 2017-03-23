@@ -135,7 +135,12 @@ const getters = {
 
   /* eslint-disable no-unused-vars*/
   /* eslint-disable no-unused-vars arrow-body-style */
-  getAnswer: (s, g) => index => s.questions[index].answers[s.questions[index].correct],
+  getAnswer: (s, g) => (index) => {
+    if (s.questions[index]) {
+      return s.questions[index].answers[s.questions[index].correct];
+    }
+    return undefined;
+  },
 
   getquestion: (s, g) => index => s.questions[index].question,
 

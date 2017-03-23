@@ -85,4 +85,8 @@ export default {
     //color: #26a69a;
     cursor: pointer;
 }
+
+th {
+  text-transform: uppercase;
+}
 </style>
