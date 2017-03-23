@@ -12,7 +12,7 @@
 
   <div v-if="!isHacker" class="row center-align">
     <a @click="playAgain()" class="waves-effect waves-light btn">Play again</a>
-    <a @click="sendResults" class="waves-effect waves-light btn">Share your score</a>
+    <a @click="sendResults" class="waves-effect waves-light btn" :class="{'disabled': sent}">{{this.sent ? 'Thank you !' : 'Share your score'}}</a>
   </div>
   <div v-else class="row center-align">
     <a @click="playAgain()" class="waves-effect waves-light btn">Play game</a>
@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       top: [],
+      sent: false,
       railleries: [
         'Your father will be so proud of you ...',
         'Can you do better?',
@@ -99,6 +100,8 @@ export default {
       this.$router.push('/play');
     },
     sendResults() {
+      this.sent = true;
+      console.log(this.sent);
       let url = '/api/top';
       if (process.env.NODE_ENV === 'development') {
         url = 'http://localhost:3141/api/top';
@@ -137,5 +140,9 @@ i {
   margin: 0px;
   //font-style: normal;
   font-size: 1.2em;
+}
+
+.button-animation {
+  transition: background-color 0.2s ease;
 }
 </style>

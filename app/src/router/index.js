@@ -5,6 +5,7 @@ import GameBoard from '@/components/GameBoard';
 import Quizz from '@/components/Quizz';
 import TopPlayersContainer from '@/components/TopPlayersContainer';
 import Results from '@/components/Results';
+import QuestionForm from '@/components/QuestionForm';
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/end',
       name: 'end',
       component: Results,
+    },
+    {
+      path: '/help-us',
+      name: 'form',
+      component: QuestionForm,
     },
     {
       path: '/highscore',

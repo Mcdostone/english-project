@@ -83,8 +83,6 @@ export default {
   padding-left: 10%;
 }
 
-
-
 .question {
   display: flex;
   align-items: center;

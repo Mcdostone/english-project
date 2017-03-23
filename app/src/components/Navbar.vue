@@ -22,6 +22,13 @@
         </router-link>
       </li>
     </ul>
+    <ul class="right">
+      <li>
+        <router-link :to="{name: 'form'}">
+          Suggest a question !
+        </router-link>
+      </li>
+    </ul>
   </div>
 </nav>
 </template>
