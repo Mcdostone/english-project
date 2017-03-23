@@ -1,0 +1,102 @@
+\documentclass[a4paper,11pt, oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{etoolbox}
+\usepackage{color}
+\usepackage[explicit,pagestyles]{titlesec}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{fancyhdr}
+\usepackage{fontspec}
+\usepackage{eurosym}
+\usepackage{titlesec}
+
+
+% ====== CONFIG ========
+\setmainfont{Roboto}
+\setsansfont{Roboto}
+\setmonofont{Roboto}
+\newfontfamily\light{Roboto Slab Light}
+\graphicspath{{img/}}
+\setlength{\unitlength}{1mm}
+
+\makeatletter
+
+\definecolor{primary}{RGB}{44, 62, 80}
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyhead[R]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+	\renewcommand{\chaptermark}[1]{\markboth{\ }{}}
+}
+
+
+\titleformat{\chapter}[display]
+	{\huge\light\color{primary}}{#1}{0pt}{\Huge}
+\titlespacing{\chapter}
+	{0pt}{0pt}{0pt}
+
+\titleformat{\section}
+	{\large\color{primary}}{\thesection}{0pt}{\MakeUppercase{#1}}
+%\titlespacing*{\section}{0pt}{2\baselineskip}{0pt}
+
+
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+\def\sizeMedia{38}
+\def\size{3.8cm}
+\def\sizeMargin{0.2cm}
+\def\margin{2}
+\def\fixMargin{0}
+
+\pagestyle{plain}
+
+
+\title{Compte rendu d'activité}
+\author{Yann Prono}
+\date{\today}
+
+\def\school{TELECOM Nancy}
+\def\schoolAddress{193 Avenue Paul Muller}
+\def\schoolPostalCode{54602}
+\def\schoolCity{Villers-lès-Nancy}
+\def\schoolCodeAndCity{\schoolPostalCode, \schoolCity}
+\def\schoolYear{2016 - 2017}
+
+\def\club{Club Studio}
+\def\chair{Eliot GODARD}
+\def\secretary{Yann PRONO}
+\def\banker{Ansel GAMET}
+\def\teacher{Isabelle HEUDIARD}
+\def\bde{Victor CHOLLEY-BARROYER}
+
+\def\schoolYear{2016 - 2017}
+
+% ====== END CONFIG ========
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\input{cover}
+	\end{titlepage}
+
+	\newpage
+	\pagecolor{white}
+
+	\newpage\null\thispagestyle{empty}\newpage
+	\setcounter{page}{1}
+
+	\clearpage
+	\chapter{Bilan moral}
+
+
+\end{document}
