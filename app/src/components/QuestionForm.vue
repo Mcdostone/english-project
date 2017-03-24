@@ -25,12 +25,11 @@
         </div>
       </div>
 
-
       <div class="row">
         <div class="col s12">
           <ul class="tabs">
-            <li class="tab col s3"><a href="#image-input">Image</a></li>
-            <li class="tab col s3"><a  href="#youtube-input">Youtube Vidéo</a></li>
+            <li @click="isImage = true" class="tab col s3 active"><a href="#image-input">Image</a></li>
+            <li @click="isImage = false" class="tab col s3"><a  href="#youtube-input">Youtube Vidéo</a></li>
           </ul>
         </div>
         <div id="image-input" class="col s12">
@@ -39,22 +38,33 @@
             <label class="active" for="visual-input">link of image</label>
           </div>
         </div>
+
         <div id="youtube-input" class="col s12">
-          <div class="input-field">
-            <input id="youtube-input" v-model="youtube" type="text" name="visual" class="validate">
-            <label class="active" for="youtube-input">videoID (youtube,videoId,start,end)</label>
+          <div class="container">
+            <div class="col s12 m12 l12">
+              <div class="input-field">
+                <input id="videoId-input" type="text" data-length="140" v-model="videoId" placeholder="myK3D8rOvMg?">
+                <label class="active" for="videoId-input">videoID</label>
+              </div>
+            </div>
+
+            <div class="col s12 m12 l12">
+              <div class="input-field">
+                <input id="start-input" v-model="start" type="text" placeholder="20">
+                <label class="active" for="start-input">Starts the video at (seconds)</label>
+              </div>
+            </div>
+
+            <div class="col s12 m12 l12">
+              <div class="input-field">
+                <input id="end-input" type="text" v-model="end" placeholder="30">
+                <label class="active" for="end-input">Ends the video at (seconds)</label>
+              </div>
+            </div>
+
           </div>
-
         </div>
       </div>
-
-      <!--<div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
-        <div class="input-field">
-          <input id="visual-input" v-model="visual" type="text" name="visual" placeholder="http://www.gifbin.com/bin/102015/1444064429_pope_francis_table_cloth_trick.gif" class="validate">
-          <label class="active" for="visual-input">visual</label>
-        </div>
-      </div>
-      -->
     </div>
 
     <div class="form-question-item">
@@ -84,8 +94,11 @@ export default {
       placeholders: ['If I go, there will be trouble', 'God save the queen !', 'Be or not to be', 'The D answer'],
       answers: ['If I go, there will be trouble', 'God save the queen !', 'Be or not to be', 'The D answer'],
       visual: 'http://www.gifbin.com/bin/102015/1444064429_pope_francis_table_cloth_trick.gif',
-      youtube: 'youtube,sBzrzS1Ag_g, 50, 70',
+      videoId: 'sBzrzS1Ag_g',
+      start: 0,
+      end: 10,
       sent: false,
+      isImage: true,
       token: undefined,
       correct: undefined,
     };
@@ -115,13 +128,23 @@ export default {
     sendQuestion() {
       if (this.correct !== undefined) {
         this.sent = true;
+
+        let visual;
+        if (this.isImage === true) {
+          visual = this.visual;
+        } else {
+          visual = `youtube,${this.videoId},${this.start},${this.end}`;
+        }
+
         const data = {
           question: this.question,
           answers: this.answers,
           correct: this.correct,
-          visual: this.visual,
+          visual,
           _csrf: this.token,
         };
+
+        console.log(data);
         this.$router.push('/thanks');
         this.$http.post(this.url(), JSON.stringify(data), {
           headers: { 'CSRF-Token': this.token },
@@ -141,6 +164,7 @@ export default {
     $('question-form, visual-input, answer1, answer2, answer3, answer4').characterCounter();
     $(document).ready(() => {
       $('ul.tabs').tabs();
+      $('ul.tabs').tabs('select_tab', 'image-input');
     });
     this.$http.get(url).then((response) => {
       if (response.body.token) {

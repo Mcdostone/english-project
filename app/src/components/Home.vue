@@ -18,7 +18,7 @@
 
     <div class="container rules" id="rules">
       <h2>The Octopus Quizz !</h2>
-      <h3>Once uppon a time...</h3>
+      <h3>Once upon a time...</h3>
       <p></p>
 
       <h3>Rules</h3>

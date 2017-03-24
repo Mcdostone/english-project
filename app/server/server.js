@@ -12,7 +12,7 @@ var config = require('./config')
 var cors = require('cors')
 var csrf = require('csurf')
 
-app.use(cors( {origin: 'http://localhost:3141' } ))
+//app.use(cors( {origin: 'http://localhost:3141' } ))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
@@ -23,11 +23,6 @@ app.use(session({
 	saveUninitialized: true
 }))
 const csrfProtection = csrf();
-
-app.use(function(req, res, next) {
-	console.log(req.body);
-	next();
-})
 
 app.use('/', routes(express.Router(), csrfProtection))
 helpers(app)

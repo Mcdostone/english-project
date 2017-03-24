@@ -55,7 +55,7 @@ export default {
           const date = new Date(e.createdAt);
           /* eslint-disable no-param-reassign  */
           e.rank = index + 1;
-          e.createdAt = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`;
+          e.createdAt = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`;
           this.top.push(e);
         });
       }

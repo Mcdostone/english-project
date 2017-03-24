@@ -45,13 +45,10 @@ module.exports = function(router, csrfProtection) {
 
 	router.get('/api/question', csrfProtection,function(req, res) {
 		res.setHeader('Content-Type', 'application/json');
-		const u = req.csrfToken()
-		console.log(u)
-		res.send(JSON.stringify({token: u}));
+		res.send(JSON.stringify({token: req.csrfToken()}));
 	})
 
 	router.post('/api/question', csrfProtection, function(req, res) {
-		console.log(req.body);
 		if(req.body.question && req.body.answers && req.body.correct) {
 			Question.create({
 				question: req.body.question,
@@ -66,7 +63,7 @@ module.exports = function(router, csrfProtection) {
 				res.setHeader('Content-Type', 'application/json');
 				res.send(JSON.stringify(q));
 			}).catch(err => {
-				console.log(err);
+				//console.log(err);
 				res.setHeader('Content-Type', 'application/json');
 				res.send();
 			});
