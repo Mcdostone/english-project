@@ -4,7 +4,7 @@
   "description": "A Vue.js project",
   "author": "Mcdostone <yann.prono@telecomnancy.net>",
   "private": true,
-  "main": "server/server.js",
+  "main": "server.js",
   "scripts": {
     "server": "nodemon",
     "dev": "node build/dev-server.js",
