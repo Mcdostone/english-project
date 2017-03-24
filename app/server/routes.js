@@ -15,6 +15,7 @@ module.exports = function(router, csrfProtection) {
 	router.get('/api/questions', csrfProtection, function(req, res) {
 		let questions = []
 		Question.findAll({ limit: 200 }).then(q => {
+			console.log(q.length)
 			q.forEach((question) => {
 				questions.push(utils.formatQuestion(question))
 			})

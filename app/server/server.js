@@ -9,10 +9,11 @@ var helpers = require('express-helpers')
 var routes = require('./routes')
 var sockets =  require('./sockets')
 var config = require('./config')
-//var cors = require('cors')
-var csrf = require('csurf')
+var csrf = require('csurf');
 
-//app.use(cors( {origin: 'http://localhost:3141' } ))
+	var cors = require('cors')
+	app.use(cors( {origin: 'http://localhost:3141' } ))
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())

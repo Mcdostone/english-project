@@ -3,16 +3,14 @@
 # Yann Prono
 #
 
-########### TEMPLATE of a questions with video
-# Question about the video?| answer 1 | answer 2 | answer 3 | answer 4 |index correct|youtube,videoId,startAt(seconds),endAt(seconds)
-
-########### TEMPLATE of a simple question
-# Question?| answer 1 | answer 2 | answer 3 | answer 4 |index correct|https://pbs.twimg.com/media/Cw4mA0AWIAAcY1w.jpg
 
 # questions of yann
-Complete these lyrics: 'We don't need no education, We don't need no ... control, No dark ... in the classroom'|force / fantasm|thought / sarcasm|some / shadow|thousand / castle|1|youtube,YR5ApYxkU-U,200,225
+Listen and complete these lyrics: 'We don't need no education, We don't need no ... control, No dark ... in the classroom'|force / fantasm|thought / sarcasm|some / shadow|thousand / castle|1|youtube,YR5ApYxkU-U,200,225
 Who is the drummer of The Beatles?|Mick Jagger|Ringo Starr|Ed Sheeran|Phil Collins|1|http://big.assets.huffingtonpost.com/2beatlesalltogether.gif
-Which of these propositions is true?|It is illegal to place a stamp of the Queen upside down on a letter|It is illegal to stand within 100 yards of the reigning monarch without wearing socks|It is illegal to die in parliament|It is illegal to drive cows down the roadway without the permission of the Commissioner of Police.|3|
+Which of these propositions is true in United Kingdom?|It is illegal to place a stamp of the Queen upside down on a letter|It is illegal to stand within 100 yards of the reigning monarch without wearing socks|It is illegal to die in parliament|It is illegal to drive cows down the roadway without the permission of the Commissioner of Police.|3|
+Listen and complete: Because it ... him interesting opportunities. Like ... a frame of pornography|affords / splicing|aborts / placing|records / phasing|ford / inserting|0|youtube,ru4glg0RJxA,30,45
+
+
 
 
 #Name this object?|shell|shield|scale|shelf|1|http://www.boutique-epees.fr/img/cms/ESCUDO-CON-FLOR-DE-LIS-297x450.jpg

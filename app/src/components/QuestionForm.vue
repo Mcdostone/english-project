@@ -108,11 +108,18 @@ export default {
   },
   computed: {
     generateQuestion() {
+      let visual;
+      if (this.isImage === true) {
+        visual = this.visual;
+      } else {
+        visual = `youtube,${this.videoId},${this.start},${this.end}`;
+      }
+
+
       const q = {
         question: this.question,
         answers: [...this.answers],
-        visual: this.visual,
-        _csrf: this.token,
+        visual,
       };
       return q;
     },

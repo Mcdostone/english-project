@@ -22,8 +22,13 @@ export default {
   watch: {
     /* eslint-disable no-unused-vars */
     video(vid, old) {
-      this.video = vid;
-      this.loadVideo();
+      if (vid.videoId === old.videoId) {
+        console.log('change');
+        this.loadVideo();
+      } else {
+        this.video = vid;
+        this.loadVideo();
+      }
     },
   },
   methods: {
@@ -76,6 +81,7 @@ export default {
   },
 
   created() {
+    console.log('rff');
     this.loadVideo();
   },
 };
