@@ -9,7 +9,7 @@ var helpers = require('express-helpers')
 var routes = require('./routes')
 var sockets =  require('./sockets')
 var config = require('./config')
-var cors = require('cors')
+//var cors = require('cors')
 var csrf = require('csurf')
 
 //app.use(cors( {origin: 'http://localhost:3141' } ))
@@ -28,6 +28,7 @@ app.use('/', routes(express.Router(), csrfProtection))
 helpers(app)
 
 app.listen(config.port, function() {
+	console.log('Environment: ' + process.env.NODE_ENV);
 	let io = require('socket.io').listen(this)
 	console.log("server is running: http://localhost:" + config.port)
 });

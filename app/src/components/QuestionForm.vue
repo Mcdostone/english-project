@@ -144,7 +144,6 @@ export default {
           _csrf: this.token,
         };
 
-        console.log(data);
         this.$router.push('/thanks');
         this.$http.post(this.url(), JSON.stringify(data), {
           headers: { 'CSRF-Token': this.token },

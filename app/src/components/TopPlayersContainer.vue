@@ -18,8 +18,13 @@ export default {
     TopPlayers,
   },
   created() {
-    this.$http.get('http://localhost:8080/api/top').then((response) => {
-      if (response.body && response.body.length !== 0) {
+    let url = '/api/top';
+    if (process.env.NODE_ENV === 'development') {
+      url = 'http://localhost:8080/api/top';
+    }
+
+    this.$http.get(url).then((response) => {
+      if (response.body && response.body.length > 0) {
         response.body.forEach((e, index) => {
           /* eslint-disable no-param-reassign  */
           e.rank = index + 1;

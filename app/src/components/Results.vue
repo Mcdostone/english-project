@@ -49,7 +49,7 @@ export default {
     TopPlayers,
   },
   created() {
-    this.$http.get('http://localhost:8080/api/top').then((response) => {
+    this.$http.get(this.getUrl()).then((response) => {
       if (response.body && response.body.length !== 0) {
         response.body.forEach((e, index) => {
           const date = new Date(e.createdAt);
@@ -92,6 +92,14 @@ export default {
     ...mapGetters(['isHacker', 'questionsAnswered', 'getquestion']),
   },
   methods: {
+    getUrl() {
+      let url = '/api/top';
+      if (process.env.NODE_ENV === 'development') {
+        url = 'http://localhost:8080/api/top';
+      }
+      return url;
+    },
+
     getExpectedAnswer(index) {
       return this.$store.getters.getAnswer(index);
     },
@@ -105,17 +113,14 @@ export default {
     },
     sendResults() {
       this.sent = true;
-      let url = '/api/top';
-      if (process.env.NODE_ENV === 'development') {
-        url = 'http://localhost:8080/api/top';
-      }
+
       const data = {
         username: this.$store.getters.username,
         points: this.$store.getters.questionsAnswered,
         seconds: this.$store.getters.seconds,
         _csrf: this.$store.getters.getToken,
       };
-      this.$http.post(url, data, {
+      this.$http.post(this.getUrl(), data, {
         headers: { 'CSRF-Token': this.$store.getters.getToken },
       });
     },
