@@ -49,7 +49,7 @@ export default {
     TopPlayers,
   },
   created() {
-    this.$http.get('http://localhost:3141/api/top').then((response) => {
+    this.$http.get('http://localhost:8080/api/top').then((response) => {
       if (response.body && response.body.length !== 0) {
         response.body.forEach((e, index) => {
           const date = new Date(e.createdAt);
@@ -107,7 +107,7 @@ export default {
       this.sent = true;
       let url = '/api/top';
       if (process.env.NODE_ENV === 'development') {
-        url = 'http://localhost:3141/api/top';
+        url = 'http://localhost:8080/api/top';
       }
       const data = {
         username: this.$store.getters.username,

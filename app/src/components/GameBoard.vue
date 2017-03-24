@@ -101,7 +101,7 @@ export default {
     fetchQuestions() {
       let url = '/api/questions';
       if (process.env.NODE_ENV === 'development') {
-        url = 'http://localhost:3141/api/questions';
+        url = 'http://localhost:8080/api/questions';
       }
       this.$http.get(url).then((response) => {
         if (response.body && response.body.questions) {

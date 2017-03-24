@@ -45,7 +45,9 @@ module.exports = function(router, csrfProtection) {
 
 	router.get('/api/question', csrfProtection,function(req, res) {
 		res.setHeader('Content-Type', 'application/json');
-		res.send(JSON.stringify({token: req.csrfToken()}));
+		const u = req.csrfToken()
+		console.log(u)
+		res.send(JSON.stringify({token: u}));
 	})
 
 	router.post('/api/question', csrfProtection, function(req, res) {

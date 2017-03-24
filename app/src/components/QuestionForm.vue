@@ -108,7 +108,7 @@ export default {
     url() {
       let url = '/api/question';
       if (process.env.NODE_ENV === 'development') {
-        url = 'http://localhost:3141/api/question';
+        url = 'http://localhost:8080/api/question';
       }
       return url;
     },
@@ -136,7 +136,7 @@ export default {
     // Materialize.updateTextFields();
     let url = '/api/question';
     if (process.env.NODE_ENV === 'development') {
-      url = 'http://localhost:3141/api/question';
+      url = 'http://localhost:8080/api/question';
     }
     $('question-form, visual-input, answer1, answer2, answer3, answer4').characterCounter();
     $(document).ready(() => {

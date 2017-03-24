@@ -9,12 +9,13 @@ var helpers = require('express-helpers')
 var routes = require('./routes')
 var sockets =  require('./sockets')
 var config = require('./config')
-//var cors = require('cors')
+var cors = require('cors')
 var csrf = require('csurf')
 
-//app.use(cors( {origin: 'http://localhost:8080' } ))
+app.use(cors( {origin: 'http://localhost:3141' } ))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.use(express.static(__dirname + '/public'))
 app.use(session({
 	secret: 'fkjfj4565sdfer9qdsglkdfg84x15cfg0v#~[] f',
@@ -23,11 +24,15 @@ app.use(session({
 }))
 const csrfProtection = csrf();
 
+app.use(function(req, res, next) {
+	console.log(req.body);
+	next();
+})
+
 app.use('/', routes(express.Router(), csrfProtection))
 helpers(app)
 
 app.listen(config.port, function() {
 	let io = require('socket.io').listen(this)
-	sockets(io)
 	console.log("server is running: http://localhost:" + config.port)
 });

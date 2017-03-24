@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  port:     3141,
+  port:     process.env.PORT || 8080,
   database: 'english',
   username: 'root',
   password: 'root',

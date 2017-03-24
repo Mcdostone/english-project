@@ -1,4 +1,4 @@
-<template>
+  <template>
 <div class="container-quizz results">
   <top-players :players="top"></top-players>
 </div>
@@ -18,7 +18,7 @@ export default {
     TopPlayers,
   },
   created() {
-    this.$http.get('http://localhost:3141/api/top').then((response) => {
+    this.$http.get('http://localhost:8080/api/top').then((response) => {
       if (response.body && response.body.length !== 0) {
         response.body.forEach((e, index) => {
           /* eslint-disable no-param-reassign  */
