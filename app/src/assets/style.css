@@ -22,6 +22,14 @@
     margin: 0;
   }
 
+  .form-question {
+    flex-direction: column;
+  }
+
+  .form-question-item {
+    width: 100%;
+  }
+
   .quizz {
     display: flex;
     margin-bottom: 10px;
@@ -40,8 +48,21 @@
     font-size: 3em;
   }
 
-  .octopus {
+  .container-quizz .quizz {
+    padding: 0 20px;
+  }
+
+  .overlay .octopus {
     height: 150px;
+    width: auto;
+  }
+  .octopus {
+    height: auto;
+    width: 100%;
+  }
+
+  .points p {
+    font-size: 2em;
   }
 
   .results .row.center-align .btn {
@@ -50,21 +71,66 @@
   }
 
   .visual {
-    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    height: 50px;
+  }
+
+  .question ul {
+    flex-direction: column;
+  }
+
+  .question p {
+    font-size: 1.2em;
+  }
+
+
+  .form-question {
+    margin-bottom: 0px;
+  }
+
+  .container-rules {
+
+  }
+
+  .question ul .answer {
+    width: 100%;
+    min-height: 30px;
+    height: auto;
+    line-height: 30px;
   }
 
   .container-quizz {
     padding-top: 120px;
   }
 
+  #chronometer p, #lifes span p{
+    margin: 0;
+  }
+
+  #lifes img {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
   h2 {
     font-size: 2em;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 1.3em;
     margin: 0;
   }
 
   .results {
     padding-left: 10%;
     padding-right: 10%;
+  }
+
+  .nooo p {
+    font-size: 3em;
   }
 
 }
@@ -88,8 +154,11 @@
 
 
   .visual {
+    width: 100%;
+    object-fit: cover;
     height: 50px;
   }
+
   .visual iframe {
     height: 50px;
     width: auto;

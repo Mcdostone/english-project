@@ -28,6 +28,7 @@ export default {
     };
   },
   created() {
+    document.body.style.overflow = 'hidden';
     this.images.push(nice);
     this.timer = setInterval(() => {
       if (this.countdown === 1) {
@@ -44,6 +45,7 @@ export default {
     }, 1000);
   },
   destroyed() {
+    document.body.style.overflow = 'initial';
     clearInterval(this.timer);
   },
 };

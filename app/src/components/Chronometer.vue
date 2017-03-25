@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="chronometer">
   <p>{{getMinutes}}:{{getSeconds}}</p>
 </div>
 </template>

@@ -28,8 +28,8 @@
       <div class="row">
         <div class="col s12">
           <ul class="tabs">
-            <li @click="isImage = true" class="tab col s3 active"><a href="#image-input">Image</a></li>
-            <li @click="isImage = false" class="tab col s3"><a  href="#youtube-input">Youtube Vidéo</a></li>
+            <li @click="isImage = true" class="tab col s6 m6 l6 active"><a href="#image-input">Image</a></li>
+            <li @click="isImage = false" class="tab col s6 m6 l6"><a  href="#youtube-input">Youtube Vidéo</a></li>
           </ul>
         </div>
         <div id="image-input" class="col s12">
@@ -47,18 +47,19 @@
                 <label class="active" for="videoId-input">videoID</label>
               </div>
             </div>
-
-            <div class="col s12 m12 l12">
-              <div class="input-field">
-                <input id="start-input" v-model="start" type="text" placeholder="20">
-                <label class="active" for="start-input">Starts the video at (seconds)</label>
+            <div class="row">
+              <div class="col s6 m6 l6">
+                <div class="input-field">
+                  <input id="start-input" v-model="start" type="text" placeholder="20">
+                  <label class="active" for="start-input">Starts the video at (seconds)</label>
+                </div>
               </div>
-            </div>
 
-            <div class="col s12 m12 l12">
-              <div class="input-field">
-                <input id="end-input" type="text" v-model="end" placeholder="30">
-                <label class="active" for="end-input">Ends the video at (seconds)</label>
+              <div class="col s6 m6 l6">
+                <div class="input-field">
+                  <input id="end-input" type="text" v-model="end" placeholder="30">
+                  <label class="active" for="end-input">Ends the video at (seconds)</label>
+                </div>
               </div>
             </div>
 
@@ -67,7 +68,8 @@
       </div>
     </div>
 
-    <div class="form-question-item">
+    <div class="form-question-item center">
+      <h3>Preview</h3>
       <quizz :question="generateQuestion" :disable="true"></quizz>
     </div>
   </div>
@@ -156,7 +158,7 @@ export default {
           headers: { 'CSRF-Token': this.token },
         });
       } else {
-        this.error = 'You forget to select the good answer !';
+        this.error = 'You forget to select the correct answer !';
       }
     },
   },
@@ -201,6 +203,10 @@ export default {
   border-right: 2px solid rgba(0, 0, 0, 0.1);
 }
 
+ul.tabs {
+  margin-bottom: 20px;
+}
+
 .tmp2 {
   width: 100%;
 }
@@ -217,5 +223,6 @@ export default {
   & .input-field .tmp div {
     width: 100%;
   }
+
 }
 </style>

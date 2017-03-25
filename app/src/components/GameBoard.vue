@@ -78,7 +78,7 @@ export default {
   },
   created() {
     this.$store.dispatch('reset');
-    document.body.style.overflow = 'hidden';
+//    document.body.style.overflow = 'hidden';
   },
   destroyed() {
     document.body.style.overflow = 'initial';

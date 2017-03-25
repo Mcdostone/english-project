@@ -6,7 +6,7 @@
           <source :src="video" type="video/mp4" />
         </video>
         <div class="splashscreen-text">
-          <p>Challenge Octopus !</p>
+          <p>THe Octopus challenge</p>
           <router-link :to="{name: 'play'}" class="play-button waves-effect waves-light btn">
             <i class="material-icons left">cloud</i>
             Play
@@ -17,17 +17,19 @@
   </div>
 
     <div class="container rules" id="rules">
-      <h2>The Octopus Quizz !</h2>
+      <!--<h2>The Octopus Quizz !</h2>-->
       <h3>Once upon a time...</h3>
       <p></p>
 
       <h3>Rules</h3>
-      Try to challenge the the octopus quizz!
-      At the beginning of the quizz, you have 3 lives. You can't gain some lives so keep it carefully !
-      The aim of this game is simple: Respond correctly to a set of <b>200</b> questions about general culture, lifestyles.
+      <p>
+        Try to challenge the the octopus quizz!
+        At the beginning of the quizz, you have 3 lives. You can't gain some lives so keep it carefully !
+        The aim of this game is simple: Respond correctly to a set of <b>200</b> questions about general culture, lifestyles.
+      </p>
 
       <h3>Be careful...</h3>
-        Octopus has a big sense of humour and likes traps. As his friend Paul Taylor, he's not afraid of tackling stereotypes of American et english people.
+        <p>Octopus has a big sense of humour and likes traps. As his friend Paul Taylor, he's not afraid of tackling stereotypes of American et english people.</p>
       </div>
   </div>
 
