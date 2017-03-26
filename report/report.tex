@@ -19,6 +19,9 @@
 
 
 % ====== CONFIG ========
+
+\setmainfont{Roboto Light}
+
 \setmainfont{Roboto Light}
 \setsansfont{Roboto}
 \setmonofont{Roboto}
@@ -58,6 +61,7 @@
 \def\schoolYear{2016 - 2017}
 
 \def\appName{The Octopus Challenge}
+\def\octopusName{Lord Octopus}
 
 \def\club{Club Studio}
 \def\chair{Eliot GODARD}
@@ -85,16 +89,30 @@
 	\tableofcontents
 
 	\chapter{Introduction}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Is this the fiftheen time you passed the TOEIC test and you still didn't get it ?
+Are you bored about making uninteresting tests on abandoned websites?
+Do you want to improve your english level by listening dialogs of your preferred TV serie ?
+Do you want to challenge others people about your language skills ?
+Do you sing songs that you don't understand ?\\
+
+\noindent English is everywhere: music, TV series, movies, articles, documentation, comics strip, social networks, youtube videos etc...
+All these supports are gold nuggets. Indeed, a lot of people use these media in their daily lives in their native language.
+The interesting point of this lifestyle is the possibility to translate these media in other language in order to learn it.
+
+\appName \ is a quiz developped in the english courses context. This is developped by students for students who wants to test a new way to learn english.
+The rules is simple: you have to answer a set of questions about general culture, grammar, listening comprehension, vocabulary... If you answer wrong 3 times, you lose and have to play again since the beginning of the quiz.
+At the end of a quiz session, you have the possibility to share your score with others and measure your evolution.
+In order to not be bored about the application, users have to possibility to suggest questions.
+
+\setcounter{page}{1}
 	\clearpage
 
-	\chapter{\appName}
-	\clearpage
 
-	\chapter{User Documentation}
-	Welcome to Octopus challenge.
-	Octopus-challenge was a quiz web site about the English culture.\\
-	Now we will present you how to use Octopus Challenge.
+\chapter{User Documentation}
+	Welcome to \appName.
+	\appName is a quiz application about the English culture.\\
+	Now we will present you how to use \appName.
 	for the next of the presentation of the application, we use this plan:
 	\begin{itemize}
 		\item Navigation menu
@@ -105,17 +123,21 @@
 	\end{itemize}
 
 	\section{Navigation menu}
-	The navigation menu was placed on the top of each page of the web site and this offer for the player 5 Button to navigate into the different screen of the web site.
+	The navigation menu was placed on the top of each page of the web site and this offer for the player five Buttons to navigate into the different screens.
 	\begin{itemize}
-		\item ‘the Game’: This Button redirect you to the home page of the application.
-		\item ‘play now!’: This Button redirect you to the game page of the application.
-		\item ‘Best scores’: This Button redirect you to the score page where you can see the best score perform on the application.
-		\item ‘suggests a question’: This Button redirects you to a page where you can suggest a question for the game.
+		\item The Game: This Button redirects you to the home page of the application.
+		\item Play now!: This Button redirects you to the game page of the application.
+		\item High scores: This Button shows you high scores of players.
+		\item Suggest a question: This Button redirects you to a form where you can imagine a question for the game.
 		\item Logo Button : This button has the same action as the Button ‘The game’ but has a special design randomly set when you load the page.
 	\end{itemize}
-	
+
 	\section{Home page}
+<<<<<<< 4e0dc41c61385a8e5f23a11e3195536efe50affb
 	When the user log on Octopus challenges he arrives on the Home page screen.(figure 1)
+=======
+	When the user log on \appName, he arrives on the Home page screen.
+(figure 1)
 
 //Home Screen figure 1
 
@@ -124,13 +146,13 @@
 
 The Home screen has various sections.
 \begin{itemize}
-	\item The ‘Start game’ section. This section allows the user to start a game
-	\item The ‘Information’ section. This section presents some information about the game rules and some story for the game.
+	\item The 'Start game' section. This section allows the user to start a game
+	\item The 'Information' section. This section presents rules of the game and the story of \octopusName.
 \end{itemize}
-	
-	
+
+
 	\section{How to play the game}
-	
+
 	To play to \appName game you have to access to the game page via the Button ‘plays now!’ in the navigation menu or via the play button on the home page.
 
 When you are on the play page you have to indicate a username.
@@ -185,7 +207,7 @@ this screen has:
 \item Button to replay a party
 \item Button to share your score and be in the top 10 players if you have a good score
 \end{itemize}
-		
+
 \section{Best score}
 To see the best score you can go to the high score page with the Best Score button on the navigation menu or to finish a party but limited to the 10 best score.
 
@@ -205,7 +227,7 @@ When you satisfied with your question you just to click on the submit button to 
 Warning: to submit your question you have to select the correct answer via the checkbox on the right of the answer.
 
 \newpage	
-	\chapter{Description technique}
+\chapter{Description technique}
 
 	Ce chapitre présentera en détails les contraintes de ce projet, la manière dont il a été développé ainsi que les problèmes que nous avons dues faire face
 	durant les semaines de développement.
@@ -217,7 +239,6 @@ Warning: to submit your question you have to select the correct answer via the c
 		\item Les contraintes liés au sujet (temps de développement, attentes du client).
 		\item Les contraintes liés au type de l'outil informatique à développer.\\
 	\end{itemize}
-
 Nous avons mis beaucoup de temps à choisir l'outil informatique que nous souhaitions développer. Notre premier choix s'est porté sur un clone du projet Voltaire adapté à la langue de shakespeare.
 Cependant, ce choix ne s'est pas révélé motivant. Le choix suivant s'est alors porté sur un quiz à base d'image où l'objectif devait être de trouver le mot correspondant au mot affiché. De plus, ce choix
 ne nous semblait pas assez solide pour en faire un outil informatique à part entière. De plus, Ce moyen d'apprendre la langue n'est pas forcément efficace.
@@ -246,6 +267,10 @@ L'application \appName est composé deux parties:
 
 
 
+
+faire le point et ouvrir le sujet
+
+autres horizons ou développement futures
 
 
 \end{document}

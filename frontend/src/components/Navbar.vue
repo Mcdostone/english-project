@@ -18,7 +18,7 @@
       </li>
       <li>
         <router-link :to="{name: 'highscore'}">
-          Best scores
+          High scores
         </router-link>
       </li>
     </ul>
