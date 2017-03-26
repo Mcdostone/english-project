@@ -30,20 +30,9 @@
 
 \definecolor{primary}{RGB}{44, 62, 80}
 
-%\fancypagestyle{plain}{
-%	\fancyhf{}
-%	\fancyhead[R]{\thepage}
-%	\renewcommand{\headrulewidth}{0pt}
-%	\renewcommand{\footrulewidth}{0pt}
-%	\renewcommand{\chaptermark}[1]{\markboth{\ }{}}
-%}
 
-
-\titleformat{\chapter}[display]{\huge\light}{\thechapter \hspace{20pt} #1}{0pt}{}
-
-\titleformat{\section}[display]
-	{\large\light}{}{0pt}{\thesection \quad #1}
-%\titlespacing*{\section}{0pt}{2\baselineskip}{0pt}
+\titleformat{\chapter}[display]{\huge\light}{\thechapter \quad #1}{0pt}{}
+\titleformat{\section}[display]{\large\light}{}{0pt}{\thesection \quad #1}
 
 
 \setlength{\TPHorizModule}{1mm}
