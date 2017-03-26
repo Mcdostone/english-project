@@ -98,7 +98,7 @@ const getters = {
   },
 
   questionsAnswered(s) {
-    return s.current + 1;
+    return s.current;
   },
 
   isHacker(s) {
