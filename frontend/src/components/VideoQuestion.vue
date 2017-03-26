@@ -41,9 +41,12 @@ export default {
       } else {
         this.youtube.load((YT) => {
           this.player = new YT.Player('video', {
+            width: '',
+            height: '',
             events: {
               onReady: () => {
                 this.ready = true;
+                document.getElementById('video').width = window.innerWidth;
                 this.changeVideo(parts[0], parseInt(parts[1], 10), parts.length === 3 ? parseInt(parts[2], 10) : parseInt(parts[1], 10) + 7);
               },
               onStateChange: (event) => {
@@ -80,9 +83,12 @@ export default {
     },
   },
 
-  created() {
-    console.log('rff');
+  mounted() {
     this.loadVideo();
+    const resizeListener = (e) => {
+      document.getElementById('video').width = window.innerWidth;
+    };
+    window.addEventListener('resize', resizeListener);
   },
 };
 </script>

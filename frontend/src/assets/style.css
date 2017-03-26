@@ -1,7 +1,12 @@
-.visual iframe {
+  .visual iframe {
   min-height: 0;
 }
 
+@media screen and (max-width: 700px) {
+  .nav-wrapper ul {
+    display: none;
+  }
+}
 @media screen and (max-width: 1000px) {
   .quizz-counter {
     background: #26a69a;
@@ -73,7 +78,7 @@
   .visual {
     width: 100%;
     object-fit: cover;
-    height: 50px;
+    //height: 50px;
   }
 
   .question ul {
@@ -98,10 +103,6 @@
     min-height: 30px;
     height: auto;
     line-height: 30px;
-  }
-
-  .container-quizz {
-    padding-top: 120px;
   }
 
   #chronometer p, #lifes span p{
@@ -156,7 +157,6 @@
   .visual {
     width: 100%;
     object-fit: cover;
-    height: 50px;
   }
 
   .visual iframe {
