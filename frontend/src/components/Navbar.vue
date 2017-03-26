@@ -1,39 +1,65 @@
 <template>
-<nav>
-  <div class="nav-wrapper">
-    <router-link :to="{name: 'root'}" class="brand-logo center">
-      <img :src="logo" alt="" class="logo">
-    </router-link>
+<div class="">
+  <ul id="slide-out" class="side-nav">
+     <li>
+       <div class="userView">
+         <div class="background">
+           <img :src="logo">
+         </div>
+         <router-link :to="{name: 'root'}">
+           The game
+         </router-link>
+         <router-link :to="{name: 'play'}">
+           Play now !
+         </router-link>
+         <router-link :to="{name: 'highscore'}">
+           High scores
+         </router-link>
+         <router-link :to="{name: 'form'}">
+           Suggest a question
+         </router-link>
+      </div>
+    </li>
+  </ul>
 
-    <ul class="left">
-      <li>
-        <router-link :to="{name: 'root'}">
-          The game
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{name: 'play'}">
-          Play now !
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{name: 'highscore'}">
-          High scores
-        </router-link>
-      </li>
-    </ul>
-    <ul class="right">
-      <li>
-        <router-link :to="{name: 'form'}">
-          Suggest a question
-        </router-link>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-wrapper">
+
+      <router-link :to="{name: 'root'}"  data-activates="slide-out" class="brand-logo center">
+        <img :src="logo" class="logo">
+      </router-link>
+
+      <ul class="left">
+        <li>
+          <router-link :to="{name: 'root'}">
+            The game
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'play'}">
+            Play now !
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'highscore'}">
+            High scores
+          </router-link>
+        </li>
+      </ul>
+      <ul class="right">
+        <li>
+          <router-link :to="{name: 'form'}">
+            Suggest a question
+          </router-link>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
 </template>
 
 <script>
+import $ from 'jquery';
 import logo from '../assets/logo0.png';
 import logo1 from '../assets/logo1.png';
 import logo2 from '../assets/logo2.png';
@@ -43,6 +69,8 @@ import logo5 from '../assets/logo5.png';
 import logo6 from '../assets/logo6.png';
 import logo7 from '../assets/logo7.png';
 import logo8 from '../assets/logo8.png';
+
+require('materialize-css');
 
 export default {
   name: 'navbar',
@@ -57,6 +85,15 @@ export default {
       return this.logos[rand];
     },
   },
+  created() {
+    $(document).ready(() => {
+      $('.brand-logo').sideNav({
+        menuWidth: 300,
+        closeOnClick: true,
+        draggable: true,
+      });
+    });
+  },
 };
 </script>
 
@@ -69,6 +106,10 @@ nav ul a {
 }
 nav .brand-logo {
   color: black;
+}
+
+.side-nav .background img {
+  width: 100%;
 }
 
 .logo {

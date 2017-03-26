@@ -1,7 +1,12 @@
-.visual iframe {
+  .visual iframe {
   min-height: 0;
 }
 
+@media screen and (max-width: 700px) {
+  .nav-wrapper ul {
+    display: none;
+  }
+}
 @media screen and (max-width: 1000px) {
   .quizz-counter {
     background: #26a69a;
