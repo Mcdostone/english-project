@@ -29,7 +29,7 @@
         <div class="col s12">
           <ul class="tabs">
             <li @click="isImage = true" class="tab col s6 m6 l6 active"><a href="#image-input">Image</a></li>
-            <li @click="isImage = false" class="tab col s6 m6 l6"><a  href="#youtube-input">Youtube Vidéo</a></li>
+            <li @click="isImage = false" class="tab col s6 m6 l6"><a  href="#youtube-input">Youtube Video</a></li>
           </ul>
         </div>
         <div id="image-input" class="col s12">
