@@ -81,11 +81,11 @@
 	\newpage
 
 	\newpage\null\thispagestyle{empty}\newpage
-	\setcounter{page}{1}
 	\tableofcontents
 
 	\chapter{Introduction}
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\setcounter{page}{1}
 	\clearpage
 
 	\chapter{\appName}
@@ -155,18 +155,54 @@ la compréhension de l'Anglais, la manière dont les informations sont transmise
 Il saura donc important d'adapter l'application afin dé répondre à cette contrainte dans l'objectif d'apporter la meilleur expérience pour l'utilisateur.
 
 
-\clearpage
 \section{Développement de l'application}
 
 
 L'application \appName est composé deux parties:
 \begin{itemize}
-	\item le backend, programme étant exécuté sur le serveur, ayant pour but de répondre aux requètes des clients.
-	\item le frontend, programme étant exécuté sur le navigateur web, coeur du projet, permettant de gérer l'affichage des informations sur le navigateur.
+	\item le backend, programme informatique étant exécuté sur le serveur, ayant pour but de répondre aux requêtes des clients.
+	\item le frontend, programme étant exécuté sur le navigateur web, coeur du projet, permettant de gérer l'affichage des informations sur le navigateur.\\
 \end{itemize}
 
+\noindent Pour ce projet, nous avons décidé de développer le backend avec express, un framework NodeJS permettant de développer rapidement un serveur web. Le serveur permet
+\begin{itemize}
+	\item D'envoyer le point d'entrée de l'application web avec les programmes du frontend.
+	\item De stocker l'ensemble des questions grâce à une base de données.
+	\item De stocker l'ensemble des scores des joueurs grâce à une base de données.
+	\item d'envoyer l'ensemble des questions disponibles via une API JSON.\\
+\end{itemize}
 
+\noindent Pour la base de données, nous avons optés pour PostgreSQL. Ce choix n'a pas d'importance réelle pour l'application mais s'est révelé efficace pour l'hébergement de l'application.
+Le serveur est la petite partie de ce projet (environ 300 lignes de code). Le coeur du projet concerne le frontend de l'application (3000 lignes de code).\\
 
+Le frontend a été développé avec VueJS 2. La manière de concevoir des applications web a beaucoup évolué au cours de ces dernières années avec notamment de nombreux frameworks comme AngularS, ReactJS ou encore EmbedJS. VueJS fait partie
+de ces frameworks rendant les applications plus maintenables et facile à développer. Une fonctionnalité intéressante TODO\\
+
+\noindent Le frontend permet:
+\begin{itemize}
+		\item D'afficher la page correspondante à la requête de l'utilisateur (page d'accueil, jouer, pages des scores ...)
+		\item De mettre en oeuvre le moteur de jeu développé pourle quiz (affichage de la question, affichage des réponses, lecture d'une vidéo youtube...)
+		\item D'envoyer les résultats d'une partie au serveur
+		\item D'afficher le formulaire pour la suggestion d'une question
+		\item
+\end{itemize}
+\section{Hébergement}
+
+Une des problématiques dont nous avons dues faire face à la fin du développement de l'application est l'hébergement. Cette étape finale du développement à pour but de
+rendre disponible l'application sur internet. De nombreux hébergeurs proposent ce service gratuitement ou non. Cependant, la plupart ne se sont pas tous mis à niveau concernant
+les nouvelles technologies comme NodeJS. C'est pourquoi, il a donc été difficile de trouver un hébérgeur supportant la technologie comme nous avons employés.\\
+
+Un hébergeur a retenu notre attention: Heroku. La principale force d'héroku est qu'il répond au problème actuel précédent, le support des nouvelles technologies pour le web.
+Un des autres points forts est que l'hébergement est gratuit pour de petites applications comme la nôtre. Il a été nécéssaire de configurer l'application et l'hérgement sur Heroku (base de données, port d'écoute ...)
+afin de rendre fonctionnelle l'application sur internet. Une contrainte nous a cependant été imposée: Utiliser postgresSQL comme outil pour la base de données. Vous retrouverez l'application à l'adresse suivante:
+
+\section{Difficultées rencontrées}
+
+Nous avons dues faire face à deux difficultées au cours de ce projet. La première a été la technologie utilisée pour le développment du frontend. Nous n'avions jamais utilisé ce framework.
+Nous avons donc appris comment utiliser VueJS à l'aide de tutoriaux ainsi que des vidéos. Cette difficultée a été cependant fructueuse car elle nous permis d'agrandir notre bagage de compétences
+mais également à apprendre une technologie en une courte période.
+
+\chapter{Conclusion}
 
 
 \end{document}

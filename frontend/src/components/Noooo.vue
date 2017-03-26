@@ -23,8 +23,8 @@ export default {
   created() {
     document.body.style.overflow = 'hidden';
     this.timeout = setTimeout(() => {
-      // this.cls = '';
-      // this.$emit('close');
+      this.cls = '';
+      this.$emit('close');
     }, 1000);
   },
   destroyed() {
