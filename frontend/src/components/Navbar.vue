@@ -85,7 +85,7 @@ export default {
       return this.logos[rand];
     },
   },
-  created() {
+  mounted() {
     $(document).ready(() => {
       $('.brand-logo').sideNav({
         menuWidth: 300,
