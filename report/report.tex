@@ -19,7 +19,7 @@
 
 
 % ====== CONFIG ========
-\setmainfont{Roboto}
+\setmainfont{Roboto Light}
 \setsansfont{Roboto}
 \setmonofont{Roboto}
 \newfontfamily\light{Roboto Slab Light}
@@ -31,8 +31,8 @@
 \definecolor{primary}{RGB}{44, 62, 80}
 
 
-\titleformat{\chapter}[display]{\huge\light}{\thechapter \quad #1}{0pt}{}
-\titleformat{\section}[display]{\large\light}{}{0pt}{\thesection \quad #1}
+\titleformat{\chapter}[display]{\huge}{\thechapter \quad #1}{0pt}{}
+\titleformat{\section}[display]{\LARGE}{}{0pt}{\thesection \quad #1}
 
 
 \setlength{\TPHorizModule}{1mm}
@@ -91,8 +91,47 @@
 	\chapter{\appName}
 	\clearpage
 
-	\chapter{Description techique}
-	\clearpage
+	\chapter{Description technique}
+
+	Ce chapitre présentera en détails les contraintes de ce projet, la manière dont il a été développé ainsi que les problèmes que nous avons dues faire face
+	durant les semaines de développement.
+
+	\section{Contraintes}
+
+	Nous avons dégagé deux types de contraintes lors de la phase d'analyse de ce projet:
+	\begin{itemize}
+		\item Les contraintes liés au sujet (temps de développement, attentes du client).
+		\item Les contraintes liés au type de l'outil informatique à développer.\\
+	\end{itemize}
+
+Nous avons mis beaucoup de temps à choisir l'outil informatique que nous souhaitions développer. Notre premier choix s'est porté sur un clone du projet Voltaire adapté à la langue de shakespeare.
+Cependant, ce choix ne s'est pas révélé motivant. Le choix suivant s'est alors porté sur un quiz à base d'image où l'objectif devait être de trouver le mot correspondant au mot affiché. De plus, ce choix
+ne nous semblait pas assez solide pour en faire un outil informatique à part entière. De plus, Ce moyen d'apprendre la langue n'est pas forcément efficace.
+Notre choix final s'est porté sur un mélange de tous les choix précédents en y apportant quelque chose d'éducatif et simple à utiliser.\\
+
+Le choix du sujet nous a fait perdre du temps pour la conception et le développement de l'outil. Le développement devait donc se faire sur une plus courte période.
+Le développement d'une application web s'est alors présenté à nous. Nous disposons tout les deux des compétences pour travailler dans le web.
+De plus, Le web est accessible depuis n'importe quel appareil disposant d'un navigateur internet, point non négligeable pour le succès de l'application.\\
+
+Le sujet étant fixé, d'autres contraintes se sont rajoutés. La première est le fait que l'application de doit être accessible depuis n'importe quel appareil. En effet,
+une application ne fonctionne pas et ne s'affiche pas de la même manière sur un ordinateur ou sur un smartphone (écran plus petit, limitations matérielles...). Il sera donc nécéssaire
+d'adapter certains aspects de l'application pour la rendre fonctionnelle. La dernière contraintes est l'expérience de l'utilisateur. Si notre application à pour ambition d'améliorer
+la compréhension de l'Anglais, la manière dont les informations sont transmises de l'application à l'utilisateur est un point crucial. L'information doit être facilement accessible (peu de clicks, accès rapide, application réactive).
+Il saura donc important d'adapter l'application afin dé répondre à cette contrainte dans l'objectif d'apporter la meilleur expérience pour l'utilisateur.
+
+
+\clearpage
+\section{Développement de l'application}
+
+
+L'application \appName est composé deux parties:
+\begin{itemize}
+	\item le backend, programme étant exécuté sur le serveur, ayant pour but de répondre aux requètes des clients.
+	\item le frontend, programme étant exécuté sur le navigateur web, coeur du projet, permettant de gérer l'affichage des informations sur le navigateur.
+\end{itemize}
+
+
+
 
 
 \end{document}
