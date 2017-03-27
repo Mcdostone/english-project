@@ -2,7 +2,7 @@
 <div class="container-quizz">
 
   <div v-if="!created">
-    <h2>Creating a game</h2>
+    <h2>Create a game</h2>
     <div class="container">
       <div class="row">
         <div class="col s10 l6 m6 offset-s1 offset-l3 offset-m3">
