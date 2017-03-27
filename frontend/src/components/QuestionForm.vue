@@ -153,10 +153,10 @@ export default {
           _csrf: this.token,
         };
 
-        this.$router.push('/thanks');
         this.$http.post(this.url(), JSON.stringify(data), {
           headers: { 'CSRF-Token': this.token },
         });
+        this.$router.push('/thanks');
       } else {
         this.error = 'You forget to select the correct answer !';
       }
