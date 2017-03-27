@@ -16,7 +16,7 @@
       <overlay v-if="begin" v-on:begin="createGame"></overlay>
 
       <div class="row center-align">
-        <a @click="run()" class="waves-effect waves-light btn">Create</a>
+        <a @click="run()" class="waves-effect waves-light btn">I am ready!</a>
       </div>
 
       <div class="row center-align">

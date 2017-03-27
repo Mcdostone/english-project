@@ -18,21 +18,20 @@
 
     <div class="container rules" id="rules">
       <!--<h2>The Octopus Quizz !</h2>-->
-      <h3>Once upon a time...</h3>
-      <p></p>
-
+      The Octopus Challenge is a quiz developped in the english courses context. It has been
+developped by students for students who wants to test a new way to learn english. Try our application right now !
       <h3>Rules</h3>
       <p>
-        Try to challenge the the octopus quizz!
-        At the beginning of the quizz, you have 3 lives. You can't gain some lives so keep it carefully !
-        The aim of this game is simple: Respond correctly to a set of <b>200</b> questions about general culture, lifestyles.
+        Rules are simple: you have to answer a set of questions about general culture, grammar, listening comprehension, vocabulary...
+        <br>1 question, 4 answers but only 1 correct ! Choose the good answer to continue the game.<br>If you answer wrong 3 times, you lose and have to play
+        again since the beginning of the quiz.
+        <br>
+        <br>
+
+        Good luck !
       </p>
-
-      <h3>Be careful...</h3>
-        <p>Octopus has a big sense of humour and likes traps. As his friend Paul Taylor, he's not afraid of tackling stereotypes of American et english people.</p>
-      </div>
+    </div>
   </div>
-
 </template>
 
 <script>

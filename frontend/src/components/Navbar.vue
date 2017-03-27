@@ -87,10 +87,16 @@ export default {
   },
   mounted() {
     $(document).ready(() => {
-      $('.brand-logo').sideNav({
-        menuWidth: 300,
-        closeOnClick: true,
-        draggable: true,
+      window.addEventListener('resize', () => {
+        if (window.innerWidth <= 700) {
+          $('.brand-logo').sideNav({
+            menuWidth: 300,
+            closeOnClick: true,
+            draggable: true,
+          });
+        } else {
+          $('.brand-logo').sideNav('destroy');
+        }
       });
     });
   },

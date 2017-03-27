@@ -46,7 +46,7 @@ export default {
             events: {
               onReady: () => {
                 this.ready = true;
-                document.getElementById('video').width = window.innerWidth;
+                // document.getElementById('video').width = window.innerWidth;
                 this.changeVideo(parts[0], parseInt(parts[1], 10), parts.length === 3 ? parseInt(parts[2], 10) : parseInt(parts[1], 10) + 7);
               },
               onStateChange: (event) => {
@@ -85,10 +85,6 @@ export default {
 
   mounted() {
     this.loadVideo();
-    const resizeListener = (e) => {
-      document.getElementById('video').width = window.innerWidth;
-    };
-    window.addEventListener('resize', resizeListener);
   },
 };
 </script>
@@ -103,6 +99,7 @@ export default {
 }
 .visual iframe {
   height: inherit;
+  width: 100%;
   max-height: 250px;
   height: 250px;
 }

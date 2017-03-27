@@ -108,10 +108,12 @@ export default {
   margin: 0 auto;
 }
 
+
+
 .visual-container {
   display: inline-block;
   position: relative;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   text-align: center;
 /*  &:after {
