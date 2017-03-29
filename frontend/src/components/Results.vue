@@ -112,8 +112,6 @@ export default {
       this.$router.push('/play');
     },
     sendResults() {
-      this.sent = true;
-
       if (this.sent === false) {
         const data = {
           username: this.$store.getters.username,
@@ -121,6 +119,7 @@ export default {
           seconds: this.$store.getters.seconds,
           _csrf: this.$store.getters.getToken,
         };
+        this.sent = true;
         this.$http.post(this.getUrl(), data, {
           headers: { 'CSRF-Token': this.$store.getters.getToken },
         });

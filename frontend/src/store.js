@@ -109,7 +109,6 @@ const getters = {
     return s.chronometer;
   },
 
-
   getQuestion(s) {
     return s.questions[0];
   },

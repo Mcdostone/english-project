@@ -25,6 +25,7 @@ export default {
 
     this.$http.get(url).then((response) => {
       if (response.body && response.body.length > 0) {
+        console.log(response.body);
         response.body.forEach((e, index) => {
           /* eslint-disable no-param-reassign  */
           e.rank = index + 1;
