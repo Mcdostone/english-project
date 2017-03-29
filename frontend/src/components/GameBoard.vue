@@ -1,6 +1,11 @@
 <template>
 <div class="container-quizz">
 
+  <transition enter-active-class="animated" leave-active-class="animated fadeOut">
+    <winner v-if="win"></winner>
+  </transition>
+
+
   <div v-if="!created">
     <h2>Create a game</h2>
     <div class="container">
@@ -34,6 +39,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import Loader from '@/components/Loader';
+import Winner from '@/components/Winner';
 import Overlay from '@/components/Overlay';
 import Creating from '@/components/Creating';
 import QuizzCounter from '@/components/QuizzCounter';
@@ -46,6 +52,7 @@ export default {
     return {
       loading: false,
       load,
+      win: false,
       usernameInput: this.$store.getters.username,
       begin: false,
       created: false,
@@ -54,6 +61,7 @@ export default {
   components: {
     Loader,
     Creating,
+    Winner,
     Overlay,
     QuizzCounter,
     Quizz,
@@ -63,7 +71,8 @@ export default {
 
     isFinished() {
       if (this.$store.getters.quizzFinished === true) {
-        this.$router.push('/end');
+        // this.$router.push('/end');
+        this.win = this.$store.getters.isWinner;
         return true;
       }
       return false;

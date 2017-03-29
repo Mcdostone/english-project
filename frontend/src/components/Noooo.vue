@@ -24,7 +24,9 @@ export default {
     document.body.style.overflow = 'hidden';
     this.timeout = setTimeout(() => {
       this.cls = '';
-      this.$emit('close');
+      if (this.$store.getters.quizzFinished === false) {
+        this.$emit('close');
+      }
     }, 1000);
   },
   destroyed() {

@@ -114,15 +114,17 @@ export default {
     sendResults() {
       this.sent = true;
 
-      const data = {
-        username: this.$store.getters.username,
-        points: this.$store.getters.questionsAnswered,
-        seconds: this.$store.getters.seconds,
-        _csrf: this.$store.getters.getToken,
-      };
-      this.$http.post(this.getUrl(), data, {
-        headers: { 'CSRF-Token': this.$store.getters.getToken },
-      });
+      if (this.sent === false) {
+        const data = {
+          username: this.$store.getters.username,
+          points: this.$store.getters.questionsAnswered,
+          seconds: this.$store.getters.seconds,
+          _csrf: this.$store.getters.getToken,
+        };
+        this.$http.post(this.getUrl(), data, {
+          headers: { 'CSRF-Token': this.$store.getters.getToken },
+        });
+      }
     },
   },
 };

@@ -4,6 +4,11 @@
     <transition enter-active-class="animated pulse" leave-active-class="animated fadeOut">
       <noooo v-if="wrong" v-on:close="closeNoooo"></noooo>
     </transition>
+
+    <transition enter-active-class="animated zoomInLeft delay" leave-active-class="animated fadeOut">
+      <looser v-if="hasLost"></looser>
+    </transition>
+
     <div v-if="question.visual && !isVideo" class="center visual-container">
       <img :src="question.visual" class="visual" alt="">
     </div>
@@ -20,6 +25,7 @@
 
 <script>
 import Noooo from '@/components/Noooo';
+import Looser from '@/components/Looser';
 import VideoQuestion from '@/components/VideoQuestion';
 
 export default {
@@ -32,6 +38,7 @@ export default {
   },
   components: {
     Noooo,
+    Looser,
     VideoQuestion,
   },
   props: ['question', 'disable'],
@@ -48,6 +55,14 @@ export default {
       }
       return false;
     },
+
+    hasLost() {
+      if (this.$store.getters.quizzFinished === true && this.$store.getters.getLifes <= 0) {
+        return true;
+      }
+      return false;
+    },
+
   },
 
   methods: {
@@ -71,6 +86,7 @@ export default {
           this.hidden.forEach(el => el.style.visibility = 'hidden');
           this.$store.dispatch('reduceLife');
         }
+        this.win = this.$store.getters.isWinner;
       }
     },
   },
@@ -116,19 +132,7 @@ export default {
   width: 100%;
   max-width: 100%;
   text-align: center;
-/*  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    width: 50px;
-    transform: translate(-50%, 50%);
-    border-radius: 50%;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-    height: 50px;
-    background: #E57373;
-  }*/
-}
+  }
 
 .question ul {
   padding: 0;
@@ -164,5 +168,9 @@ export default {
 .slide-fade-enter, .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
+}
+
+.delay {
+   animation-delay: 0.5s;
 }
 </style>

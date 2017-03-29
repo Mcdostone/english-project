@@ -122,6 +122,10 @@ const getters = {
     return s.lifes;
   },
 
+  isWinner(s) {
+    return s.lifes > 0 && (s.current >= s.questions.length);
+  },
+
   getQuestions(s) {
     return s.questions;
   },
