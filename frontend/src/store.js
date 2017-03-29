@@ -127,7 +127,7 @@ const getters = {
   },
 
   isLooser(s) {
-    return s.lifes >= 0;
+    return s.lifes <= 0;
   },
 
   getQuestions(s) {
