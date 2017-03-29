@@ -5,10 +5,6 @@
       <noooo v-if="wrong" v-on:close="closeNoooo"></noooo>
     </transition>
 
-    <transition enter-active-class="animated zoomInLeft delay" leave-active-class="animated fadeOut">
-      <looser v-if="hasLost"></looser>
-    </transition>
-
     <div v-if="question.visual && !isVideo" class="center visual-container">
       <img :src="question.visual" class="visual" alt="">
     </div>
@@ -25,7 +21,6 @@
 
 <script>
 import Noooo from '@/components/Noooo';
-import Looser from '@/components/Looser';
 import VideoQuestion from '@/components/VideoQuestion';
 
 export default {
@@ -38,7 +33,6 @@ export default {
   },
   components: {
     Noooo,
-    Looser,
     VideoQuestion,
   },
   props: ['question', 'disable'],

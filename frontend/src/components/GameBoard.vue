@@ -5,6 +5,11 @@
     <winner v-if="win"></winner>
   </transition>
 
+  <transition enter-active-class="animated zoomInLeft" leave-active-class="animated fadeOut">
+    <looser v-if="loose"></looser>
+  </transition>
+
+
 
   <div v-if="!created">
     <h2>Create a game</h2>
@@ -44,6 +49,7 @@ import Overlay from '@/components/Overlay';
 import Creating from '@/components/Creating';
 import QuizzCounter from '@/components/QuizzCounter';
 import Quizz from '@/components/Quizz';
+import Looser from '@/components/Looser';
 import load from '../assets/load.gif';
 
 export default {
@@ -53,6 +59,7 @@ export default {
       loading: false,
       load,
       win: false,
+      loose: false,
       usernameInput: this.$store.getters.username,
       begin: false,
       created: false,
@@ -62,6 +69,7 @@ export default {
     Loader,
     Creating,
     Winner,
+    Looser,
     Overlay,
     QuizzCounter,
     Quizz,
@@ -72,6 +80,7 @@ export default {
     isFinished() {
       if (this.$store.getters.quizzFinished === true) {
         // this.$router.push('/end');
+        this.loose = this.$store.getters.isLooser;
         this.win = this.$store.getters.isWinner;
         return true;
       }

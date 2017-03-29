@@ -126,6 +126,10 @@ const getters = {
     return s.lifes > 0 && (s.current >= s.questions.length);
   },
 
+  isLooser(s) {
+    return s.lifes >= 0;
+  },
+
   getQuestions(s) {
     return s.questions;
   },
