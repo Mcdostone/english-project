@@ -3,5 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "prism": "gh-pages"
+  },
+  "resolutions": {
+    "prism": "^1.6.0"
   }
 }
